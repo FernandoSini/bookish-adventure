@@ -3,21 +3,21 @@ package br.com.fernandosini.bookishadventure
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import br.com.fernandosini.bookishadventure.screens.App
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val database = createRoomDatabase(applicationContext)
         setContent {
-            App()
+            App(database)
         }
     }
 }
 
+/*
 @Preview
 @Composable
 fun AppAndroidPreview() {
     App()
-}
+}*/

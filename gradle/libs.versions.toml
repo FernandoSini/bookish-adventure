@@ -30,6 +30,12 @@ navigationCompose = "2.8.0-alpha10"
 permissionsCompose = "0.18.0"
 activityKtx = "1.9.3"
 dateTimeVersion = "0.6.0"
+#androidxRoom = "2.7.0-alpha06"
+androidxRoom = "2.7.0-alpha08"
+#ksp="2.0.21-1.0.27"
+ksp="2.0.21-1.0.27"
+#sqlite = "2.5.0-SNAPSHOT"
+sqlite = "2.5.0-alpha12"
 
 [libraries]
 adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "adaptiveNavigationVersion" }
@@ -63,9 +69,16 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "permissionsCompose" }
 russhwolf-multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatformSettingsNoArgVersion" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+room = { id = "androidx.room", version.ref = "androidxRoom" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

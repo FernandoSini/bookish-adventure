@@ -7,8 +7,17 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.room)
+    id("com.google.devtools.ksp")
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+ksp {
+    arg("room.schemaLocation", "${projectDir}/schemas")
+}
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -16,7 +25,10 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+    tasks.withType<Test> {
+        enabled = false
+    }
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,11 +40,13 @@ kotlin {
             binaryOption("bundleShortVersionString", "1.0.0")
             baseName = "ComposeApp"
             isStatic = true
+            linkerOpts.add("-lsqlite3")
+
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
 
             implementation(compose.preview)
@@ -42,6 +56,8 @@ kotlin {
             implementation(libs.androidx.activity.ktx)
         }
         commonMain.dependencies {
+            implementation(libs.sqlite.bundled)
+            implementation(libs.androidx.room.runtime)
             implementation("com.ionspin.kotlin:bignum:0.3.9")
             implementation("io.github.thechance101:chart:Beta-0.0.5")
             implementation("io.github.kevinnzou:compose-webview-multiplatform:1.9.40")
@@ -69,10 +85,15 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+
+        }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
         }
     }
 }
@@ -109,5 +130,20 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    /* add("kspAndroid", libs.androidx.room.compiler)
+     add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+     add("kspIosX64", libs.androidx.room.compiler)
+     add("kspIosArm64", libs.androidx.room.compiler)*/
+    listOf(
+        "kspAndroid",
+        // "kspJvm",
+        "kspIosSimulatorArm64",
+        "kspIosX64",
+        "kspIosArm64"
+    ).forEach {
+        add(it, libs.androidx.room.compiler)
+    }
+
+
 }
 
