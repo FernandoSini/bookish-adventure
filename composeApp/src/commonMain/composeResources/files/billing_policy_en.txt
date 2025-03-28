@@ -1,0 +1,66 @@
+Billing Policy
+
+Last Updated: 21 February 2025
+
+This Purchasing Policy ("Policy") outlines the rules and conditions applicable to purchases made through the Bookish-Adventure. By making a purchase through the App, you agree to the terms and conditions of this Policy.
+
+1. Products and Services
+1.1 Types of Purchases
+The App offers the following products or services for purchase:
+
+Subscriptions: Access to premium content or features for a specified period (monthly, yearly, etc.).
+In-App Purchases: Virtual items or additional services available within the App, such as coins, upgrades, extra features, etc.
+One-Time Payments: Purchase of specific products or services without recurring charges.
+1.2 Pricing
+The prices of products and services offered in the App are subject to change at any time. The final price will be displayed before completing your purchase.
+
+2. Payment Processing
+2.1 Payment Methods
+We accept the following payment methods for in-app purchases:
+
+Credit and debit cards (Visa, MasterCard, etc.)
+Payment services like PayPal, Apple Pay, Google Pay, etc.
+[Other available payment methods]
+
+2.2 Transaction Security
+We use secure payment systems to process your transactions. While we take reasonable measures to protect your data, we cannot guarantee the absolute security of payment information transmitted over the internet. Please ensure you use a secure network when making purchases through the App.
+
+3. Subscriptions and Auto-Renewal
+3.1 Subscriptions
+The App may offer subscription plans for access to premium content or features. By subscribing, you agree to pay the price of the plan you select as shown in the available options.
+
+3.2 Auto-Renewal
+Most subscriptions in the App will automatically renew at the end of the subscription period unless you cancel the auto-renewal before the renewal date. You can cancel auto-renewal at any time in your account settings or through the app store settings (App Store, Google Play).
+
+3.3 Cancellation and Refunds
+If you wish to cancel your subscription, you may do so anytime before the next billing cycle. However, we do not offer refunds for charges already made, except where required by law. For more information on cancellations and refunds, please refer to the app store policies.
+
+4. Refunds and Return Policy
+4.1 Refunds
+Purchases made through the App are non-refundable, except in specific circumstances outlined by law or the app store policies (such as Google Play or App Store). If you encounter any issues with your purchase, please contact our support team to discuss potential solutions.
+
+4.2 Returns
+We do not accept returns for products or services purchased through the App, except if the purchase was not as described or did not function as expected. In such cases, please contact us for resolution.
+
+5. Price Changes and Product Modifications
+5.1 Price Changes
+We reserve the right to change the prices of products and services offered through the App at any time. If a price change occurs during a subscription cycle, you will be notified, and the new price will be applied at the next renewal.
+
+5.2 Product and Service Modifications
+We may modify or discontinue the products and services offered through the App at any time. However, any purchases made prior to these changes will not be affected.
+
+6. User Responsibilities
+6.1 Accuracy of Payment Information
+You agree to provide accurate and complete information when making a purchase, including valid and up-to-date payment information. If your payment details are rejected or invalid, the purchase may be canceled, and access to the product or service will be restricted.
+
+6.2 Personal Use Only
+Purchases made through the App are for your personal use only and may not be resold or redistributed without our express permission.
+
+7. Changes to This Purchasing Policy
+We may update this Purchasing Policy from time to time. When we make changes, we will post the updated Policy on this page and update the "Last Updated" date at the top. We encourage you to review this Policy periodically to stay informed about any changes.
+
+8. Contact Us
+If you have any questions regarding this Purchasing Policy or need assistance with your purchases, please contact us at:
+
+Bookish Adventure
+support@bookish-adventure.com

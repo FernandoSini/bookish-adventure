@@ -8,7 +8,7 @@ coilKtCoilCompose = "3.0.4"
 coilNetworkKtor3Version = "3.0.4"
 coilSvg = "3.0.4"
 compose = "1.7.3"
-android-compileSdk = "34"
+android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "34"
 androidx-activityCompose = "1.9.3"
@@ -31,14 +31,33 @@ permissionsCompose = "0.18.0"
 activityKtx = "1.9.3"
 dateTimeVersion = "0.6.0"
 #androidxRoom = "2.7.0-alpha06"
-androidxRoom = "2.7.0-alpha08"
+#androidxRoom = "2.7.0-alpha08"
+androidxRoom = "2.7.0-alpha13"
 #ksp="2.0.21-1.0.27"
-ksp="2.0.21-1.0.27"
+ksp="2.1.0-1.0.29"
 #sqlite = "2.5.0-SNAPSHOT"
+rules = "1.6.1"
+runner = "1.6.2"
 sqlite = "2.5.0-alpha12"
+mediaPlayerKMP = "2.0.6"
+firebase-android-bom = "33.10.0"
+firebase-gitlive-sdk = "2.1.0"
+gradlePlugins-crashlytics = "3.0.3"
+gradlePlugins-google-services = "4.4.2"
+purchases-kmp = "1.6.1+13.21.0"
+test-manifest= "1.7.8"
+firebase-core="21.1.1"
+firebase-config="21.0.0"
+firebase-crashlytics-ktx="19.0.0"
+firebase-crashlytics="3.0.3"
+
+
 
 [libraries]
 adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "adaptiveNavigationVersion" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "test-manifest" }
 coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coilSvg" }
 coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilKtCoilCompose" }
 coil3-coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coilNetworkKtor3Version" }
@@ -55,6 +74,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-test-manifest ={ module="androidx.compose.ui:ui-test-manifest",version.ref="test-manifest"}
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
@@ -73,6 +93,24 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+kmp-player = { module = "io.github.khubaibkhan4:mediaplayer-kmp", version.ref = "mediaPlayerKMP" }
+firebase-android-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-android-bom" }
+#Gitlive
+gitlive-firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firebase-gitlive-sdk" }
+gitlive-firebase-kotlin-crashlytics = { module = "dev.gitlive:firebase-crashlytics", version.ref = "firebase-gitlive-sdk" }
+gitlive-firebase-kotlin-remote-config = { module = "dev.gitlive:firebase-config", version.ref = "firebase-gitlive-sdk" }
+gitlive-firebase-kotlin-analytics = { module = "dev.gitlive:firebase-analytics", version.ref = "firebase-gitlive-sdk" }
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
+purchases-datetime = { module = "com.revenuecat.purchases:purchases-kmp-datetime", version.ref = "purchases-kmp" }
+purchases-either = { module = "com.revenuecat.purchases:purchases-kmp-either", version.ref = "purchases-kmp" }
+purchases-result = { module = "com.revenuecat.purchases:purchases-kmp-result", version.ref = "purchases-kmp" }
+firebase-core = { module = "com.google.firebase:firebase-core", version.ref = "firebase-core" }
+firebase-config ={module="com.google.firebase:firebase-config-ktx", version.ref="firebase-config"}
+#firebase-crashlytics ={module="com.google.firebase:firebase-crashlytics-ktx", version.ref="firebase-crashlytics"}
+firebase-crashlytics ={module="com.google.firebase:firebase-crashlytics", version.ref="firebase-crashlytics"}
+firebase-crashlytics-ktx ={module="com.google.firebase:firebase-crashlytics-ktx", version.ref="firebase-crashlytics-ktx"}
+firebase-common ={module="com.google.firebase:firebase-common", version.ref="firebase-config"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -82,3 +120,5 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 room = { id = "androidx.room", version.ref = "androidxRoom" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "gradlePlugins-crashlytics" }
+google-services = { id = "com.google.gms.google-services", version.ref = "gradlePlugins-google-services" }

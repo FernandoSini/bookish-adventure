@@ -29,7 +29,13 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LockClock
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.WatchLater
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,90 +47,119 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import bookishadventure.composeapp.generated.resources.DMSans_Bold
 import bookishadventure.composeapp.generated.resources.DMSans_Light
 import bookishadventure.composeapp.generated.resources.DMSans_Regular
 import bookishadventure.composeapp.generated.resources.DMSans_SemiBold
 import bookishadventure.composeapp.generated.resources.Res
+import bookishadventure.composeapp.generated.resources.travel_activities
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 class AccountScreen(private var navController: NavController) {
 
-    @OptIn(ExperimentalLayoutApi::class)
+    @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
     @Composable
     fun Content() {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.Black,
+            backgroundColor = Color.Transparent,
             contentWindowInsets = WindowInsets.safeContent,
-            //   topBar = { TopAppBar(windowInsets = WindowInsets.statusBars){} }
-        ) {
+            topBar = {
+                CenterAlignedTopAppBar(
+                    windowInsets = TopAppBarDefaults.windowInsets,
+                    //expandedHeight = TopAppBarDefaults.MediumAppBarExpandedHeight,
 
-            FlowColumn(
-                //horizontalArrangement = ,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxSize()
-                    .padding(top = 50.dp, bottom = it.calculateBottomPadding())
-                    .background(Color.Green),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
-
-
-                ) {
-
-                Box(
-
-                    Modifier.fillMaxWidth().height(200.dp).background(Color.Blue),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        modifier = Modifier.padding(top = 25.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        Box(
-                            Modifier.height(100.dp).width(100.dp)
-                                .background(Color.Yellow, shape = CircleShape),
-
-                            ) {
-
-
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Black,
+                    ),
+                    title = {},
+                    modifier = Modifier,
+                    navigationIcon = { null },
+                    actions = {
+                        IconButton(
+                            onClick = {
+                                navController.navigate("settings")
+                            }
+                        ) {
+                            Icon(
+                                Icons.Default.Settings,
+                                contentDescription = null,
+                                modifier = Modifier.size(25.dp),
+                                tint = Color.White
+                            )
                         }
+                    },
+                )
+            }
+        ) {
+            Surface(
+                modifier = Modifier.padding(top = it.calculateTopPadding()),
+                color = Color.Transparent
+            ) {
+                FlowColumn(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxSize()
+                        .padding(bottom = it.calculateBottomPadding()),
+                    verticalArrangement = Arrangement.spacedBy(20.dp),
+                ) {
+
+                    Box(
+
+                        Modifier.fillMaxWidth().height(200.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(
+                            modifier = Modifier/*.padding(top = 25.dp)*/,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Box(
+                                Modifier.height(100.dp).width(100.dp)
+                                    .background(Color.Yellow, shape = CircleShape),
+
+                                ) {
+
+
+                            }
+                            Text(
+                                text = "clebin94",
+                                style = TextStyle(
+                                    fontFamily = FontFamily(Font(Res.font.DMSans_SemiBold)),
+                                    fontSize = 20.sp,
+                                    color = Color.White
+                                )
+                            )
+                            Text(
+                                text = "São Paulo, BR",
+                                style = TextStyle(
+                                    fontFamily = FontFamily(Font(Res.font.DMSans_Regular)),
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            )
+                        }
+                    }
+                    Box(
+                        Modifier.height(25.dp).fillMaxWidth().padding(horizontal = 15.dp)
+
+                    ) {
+
                         Text(
-                            text = "clebin94",
+                            text = stringResource(Res.string.travel_activities),
                             style = TextStyle(
                                 fontFamily = FontFamily(Font(Res.font.DMSans_SemiBold)),
                                 fontSize = 20.sp,
                                 color = Color.White
                             )
                         )
-                        Text(
-                            text = "São Paulo, BR",
-                            style = TextStyle(
-                                fontFamily = FontFamily(Font(Res.font.DMSans_Regular)),
-                                fontSize = 15.sp,
-                                color = Color.White
-                            )
-                        )
                     }
+
+                    ActivityCard()
+
+
                 }
-                Box(
-                    Modifier.height(25.dp).fillMaxWidth().padding(horizontal = 15.dp)
-
-                ) {
-
-                    Text(
-                        text = "My Travel Activites",
-                        style = TextStyle(
-                            fontFamily = FontFamily(Font(Res.font.DMSans_SemiBold)),
-                            fontSize = 20.sp,
-                            color = Color.Black
-                        )
-                    )
-                }
-
-                ActivityCard()
-
-
             }
         }
 
@@ -152,7 +187,7 @@ class AccountScreen(private var navController: NavController) {
                     Text(
                         text = "Los angeles",
                         style = TextStyle(
-                            fontFamily = FontFamily(Font(Res.font.DMSans_SemiBold)),
+                            fontFamily = FontFamily(Font(Res.font.DMSans_Bold)),
                             fontSize = 20.sp,
                             color = Color.Black
                         )
@@ -171,7 +206,7 @@ class AccountScreen(private var navController: NavController) {
                         Icon(
                             Icons.Default.WatchLater,
                             contentDescription = null,
-                            modifier = Modifier.size(25.dp).padding(end = 5.dp),
+                            modifier = Modifier.size(22.dp).padding(end = 5.dp),
                             tint = Color.Gray,
                         )
                         Text(

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BookishAdventure</string>
+    <string name="hello">Olá</string>
+    <string name="welcome">Bem-vindo</string>
+    <string name="onboarding_intro">Bem-vindo ao Bookish Adventure.</string>
+    <string name="logout">Sair</string>
+    <string name="about">Sobre</string>
+    <string name="settings">Configurações</string>
+    <string name="support">Suporte</string>
+    <string name="feedback">Sugestões</string>
+    <string name="billing">Pagamento</string>
+    <string name="terms_of_use">Termos de uso</string>
+    <string name="terms_of_service">Termos de serviço</string>
+    <string name="privacy_policy">Política de privacidade</string>
+    <string name="billing_policy">Política de pagamentos</string>
+    <string name="travel_activities">Minhas viagens</string>
+    <string name="account">Conta</string>
+    <string name="search">Pesquisar</string>
+    <string name="favorite">Favoritos</string>
+    <string name="Home">Home</string>
+    <string name="flights">Vôos</string>
+</resources>

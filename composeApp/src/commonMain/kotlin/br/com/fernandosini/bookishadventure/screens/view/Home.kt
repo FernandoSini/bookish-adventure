@@ -1,6 +1,9 @@
 package br.com.fernandosini.bookishadventure.screens.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.FlingBehavior
+import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -45,7 +48,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -54,12 +59,14 @@ import bookishadventure.composeapp.generated.resources.DMSans_Light
 import bookishadventure.composeapp.generated.resources.DMSans_SemiBold
 import bookishadventure.composeapp.generated.resources.Res
 import bookishadventure.composeapp.generated.resources.plane_filled
+import bookishadventure.composeapp.generated.resources.welcome
 import br.com.fernandosini.bookishadventure.getPlatform
 import br.com.fernandosini.bookishadventure.screens.ViewModel.HomeViewModel
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class Home(private var navController: NavController){
+class Home(private var navController: NavController) {
 
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
     @Composable
@@ -68,14 +75,23 @@ class Home(private var navController: NavController){
         val scope = rememberCoroutineScope()
 
         Scaffold(
-            modifier = Modifier.fillMaxSize(), backgroundColor = Color.Black,
-            contentWindowInsets = WindowInsets.navigationBars,
+            modifier = Modifier.fillMaxSize(),
+            backgroundColor = Color.Transparent,
             topBar = {
                 CenterAlignedTopAppBar(
+                    expandedHeight = TopAppBarDefaults.MediumAppBarExpandedHeight,
+                    // windowInsets = WindowInsets.statusBars,
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Transparent,
+
+                        ),
                     navigationIcon = {
-                        Column(modifier = Modifier.padding(start = 15.dp)) {
+                        Column(
+                            modifier = Modifier.padding(start = 15.dp),
+                            verticalArrangement = Arrangement.Center
+                        ) {
                             Text(
-                                "Welcome",
+                                stringResource(Res.string.welcome),
                                 color = Color.White,
                                 fontSize = 24.sp,
                                 fontFamily = FontFamily(
@@ -104,52 +120,51 @@ class Home(private var navController: NavController){
                             }
                         }
                     },
-                    title = {
-
-                    },
+                    title = {},
 
                     actions = {
                         Icon(
                             Icons.Default.Notifications,
                             contentDescription = null,
-                            modifier = Modifier.size(30.dp),
+                            modifier = Modifier.padding(end = 15.dp).size(30.dp),
                             tint = Color.White
                         )
 
 
-
                     },
-                    windowInsets = WindowInsets.statusBars,
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Black,
-                    ),
-                )
+
+                    )
             },
 
 
-
-        ) {
+            ) {
 
             FlowRow(
                 maxLines = 1,
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 //verticalArrangement = Arrangement.spacedBy(7.dp),
-                modifier = Modifier.horizontalScroll(rememberScrollState())
-                    .padding(10.dp)
+                modifier = Modifier.horizontalScroll(
+                    rememberScrollState(),
+                    flingBehavior = ScrollableDefaults.flingBehavior()
+                ).padding(10.dp)
             ) {
                 homeViewModel.listMenuChips.value.mapIndexed { index, element ->
-
                     FilterChip(
                         onClick = {
-
                             homeViewModel.selectedChip.value = element
 
-
                         },
-                        label = { Text(element) },
+                        label = {
+                            Text(
+                                element,
+                                style = TextStyle(
+                                    fontFamily = FontFamily(Font(Res.font.DMSans_SemiBold)),
+                                    fontSize = 14.sp
+                                )
+                            )
+                        },
                         modifier = Modifier.padding(it),
                         colors = FilterChipDefaults.filterChipColors(
-
                             containerColor = Color.White,
                             selectedContainerColor = Color(0xffC6E2FF),
                             selectedLabelColor = Color.Black,

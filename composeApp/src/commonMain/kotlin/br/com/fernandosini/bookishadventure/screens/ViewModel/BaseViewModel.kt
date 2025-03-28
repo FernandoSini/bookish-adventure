@@ -6,6 +6,13 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.lifecycle.ViewModel
+import bookishadventure.composeapp.generated.resources.Home
+import bookishadventure.composeapp.generated.resources.Res
+import bookishadventure.composeapp.generated.resources.account
+import bookishadventure.composeapp.generated.resources.favorite
+import bookishadventure.composeapp.generated.resources.flights
+import bookishadventure.composeapp.generated.resources.plane_filled
+import bookishadventure.composeapp.generated.resources.search
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class BaseViewModel : ViewModel() {
@@ -20,22 +27,22 @@ class BaseViewModel : ViewModel() {
                     (
                     "screen" to "home",
                     "icon" to Icons.Default.Home,
-                    "label" to "Home",
-                    ),
+                    "label" to Res.string.Home,
+                ),
                 mutableMapOf(
-                    "screen" to "favorite",
-                    "icon" to Icons.Default.Favorite,
-                    "label" to "Favorites"
+                    "screen" to "flights",
+                    "icon" to Res.drawable.plane_filled,
+                    "label" to Res.string.flights
                 ),
                 mutableMapOf(
                     "screen" to "search",
                     "icon" to Icons.Default.Search,
-                    "label" to "Search"
+                    "label" to Res.string.search
                 ),
                 mutableMapOf(
                     "screen" to "account",
                     "icon" to Icons.Default.AccountCircle,
-                    "label" to "profile"
+                    "label" to Res.string.account
                 ),
 
                 )

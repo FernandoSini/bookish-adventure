@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
@@ -34,16 +35,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import bookishadventure.composeapp.generated.resources.DMSans_Light
 import bookishadventure.composeapp.generated.resources.Res
+import br.com.fernandosini.bookishadventure.getPlatform
 
 import br.com.fernandosini.bookishadventure.repository.db.AppDatabase
 import br.com.fernandosini.bookishadventure.screens.ViewModel.BaseViewModel
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class Base(private val appDatabase: AppDatabase) {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -52,8 +60,11 @@ class Base(private val appDatabase: AppDatabase) {
         val navigator = rememberNavController()
         val baseViewModel = viewModel<BaseViewModel> { BaseViewModel() }
         val currentDestination by navigator.currentBackStackEntryAsState()
+        var showBottomNav =
+            currentDestination?.destination?.route in baseViewModel.bottomMenuItems.value.map { it["screen"] }
         Scaffold(
             modifier = Modifier.fillMaxSize(),
+            backgroundColor = Color.Black,
             isFloatingActionButtonDocked = false,
             floatingActionButtonPosition = FabPosition.End,
 
@@ -80,65 +91,83 @@ class Base(private val appDatabase: AppDatabase) {
                 }
             },
             bottomBar = {
-                BottomAppBar(
-                   // windowInsets = WindowInsets.systemBars,
-                    backgroundColor = Color.Black,
-                    cutoutShape = CircleShape,
-                    modifier = Modifier.padding(bottom = 20.dp),
-                   // windowInsets = WindowInsets.navigationBars,
-                    content = {
-                        baseViewModel.bottomMenuItems.value.mapIndexed { index, element ->
+                if (showBottomNav) {
+                    BottomAppBar(
+                        backgroundColor = Color.Black,
+                        cutoutShape = CircleShape,
+                        modifier = if (getPlatform().name.lowercase()
+                                .contains("ios")
+                        ) Modifier.padding(bottom = 0.dp) else Modifier,
+                        windowInsets = WindowInsets.navigationBars,
+                        content = {
+                            baseViewModel.bottomMenuItems.value.mapIndexed { index, element ->
+                                BottomNavigationItem(
+                                    onClick = {
+                                        baseViewModel.bottomIndex.value = index
+                                        navigator.navigate(element["screen"].toString()) {
+                                            //         if (navigator.graph.findStartDestination().route != element["screen"].toString()) {
+                                            popUpTo(navigator.currentDestination?.route.toString()) {
+                                                inclusive = true
 
-                            BottomNavigationItem(
-
-                                onClick = {
-
-                                    baseViewModel.bottomIndex.value = index
-                                    navigator.navigate(element["screen"].toString()) {
-                                        //         if (navigator.graph.findStartDestination().route != element["screen"].toString()) {
-                                        popUpTo(navigator.currentDestination?.route.toString()) {
-                                            inclusive = true
-
+                                            }
                                         }
-                                    }
-                                    //   }
+                                        //   }
+                                    },
+                                    selected = currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true,
+                                    enabled = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true) false else true,
+                                    selectedContentColor = Color(0xffC6E2FF),
+                                    unselectedContentColor = Color.White,
 
+                                    label = {
+                                        Text(
+                                            stringResource(element["label"] as StringResource),
+                                            color = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true)
+                                                Color(
+                                                    0xffC6E2FF
+                                                ) else Color.White,
+                                            fontFamily = FontFamily(
+                                                Font(Res.font.DMSans_Light)
+                                            ),
+                                            fontSize = 12.sp
+                                        )
+                                    },
+                                    icon = {
+                                        when (element["icon"]) {
+                                            is ImageVector -> {
+                                                Icon(
+                                                    element["icon"] as ImageVector,
+                                                    contentDescription = null,
+                                                    modifier = Modifier.size(25.dp),
+                                                    // tint = Color.White
+                                                )
+                                            }
 
-                                },
-                                selected = currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true,
-                                enabled = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true) false else true,
-                                selectedContentColor = Color(0xffC6E2FF),
-                                unselectedContentColor = Color.White,
+                                            is DrawableResource -> {
+                                                Icon(
+                                                    painterResource(element["icon"] as DrawableResource),
+                                                    contentDescription = null,
+                                                    //  tint = Color.White,
+                                                    modifier = Modifier.size(25.dp)
+                                                )
+                                            }
+                                        }
 
-                                label = {
-                                    Text(
-                                        element["screen"].toString(),
-                                        color = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true)
-                                            Color(
-                                                0xffC6E2FF
-                                            ) else Color.White,
-                                        fontFamily = FontFamily(
-                                            Font(Res.font.DMSans_Light)
-                                        ),
-                                        fontSize = 12.sp
-                                    )
-                                },
-                                icon = {
-                                    Icon(
-                                        element["icon"] as ImageVector,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(25.dp),
-                                        // tint = Color.White
-                                    )
-                                },
-                            )
+                                        /*   Icon(
+                                               element["icon"] as ImageVector,
+                                               contentDescription = null,
+                                               modifier = Modifier.size(25.dp),
+                                               // tint = Color.White
+                                           )*/
+                                    },
+                                )
+                            }
                         }
+                    )
 
+                }
+            }
 
-                    })
-
-
-            }) {
+        ) {
 
             NavHost(
                 navController = navigator,
@@ -146,6 +175,10 @@ class Base(private val appDatabase: AppDatabase) {
                 modifier = Modifier,
 
                 enterTransition = {
+                    slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Start,
+                        tween(500)
+                    )
                     slideIntoContainer(
                         AnimatedContentTransitionScope.SlideDirection.Start,
                         tween(500)
@@ -177,13 +210,25 @@ class Base(private val appDatabase: AppDatabase) {
                 composable("account") {
                     AccountScreen(navController = navigator).Content()
                 }
-                composable("favorite") {
-                    Favorite(navController = navigator).Content()
+                composable("flights") {
+                    Flights(navController = navigator).Content()
                 }
                 composable("search") {
                     SearchScreen(navController = navigator).Content()
                 }
+                composable("settings") {
+                    Settings(navController = navigator).Content()
+                }
+                composable(
+                    //"policy/{policyType}",
+                    "policy"
+                  //  arguments = listOf(navArgument("policyType") { type = NavType.StringType })
+                ) {
+                   // val policyType = it.arguments?.getString("policyType") ?: "privacy_policy"
+                    PolicyScreen(navController = navigator,it.savedStateHandle).Content()
+                }
             }
+
         }
     }
 }
