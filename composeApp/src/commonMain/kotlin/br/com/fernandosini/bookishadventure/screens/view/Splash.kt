@@ -1,7 +1,6 @@
 package br.com.fernandosini.bookishadventure.screens.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,13 +14,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
@@ -42,10 +41,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.navArgument
 import bookishadventure.composeapp.generated.resources.DMSans_Bold
 import bookishadventure.composeapp.generated.resources.DMSans_SemiBold
 import bookishadventure.composeapp.generated.resources.Res
@@ -54,8 +51,8 @@ import bookishadventure.composeapp.generated.resources.plane_filled
 import br.com.fernandosini.bookishadventure.getPlatform
 import br.com.fernandosini.bookishadventure.rememberAppLocale
 import br.com.fernandosini.bookishadventure.repository.db.AppDatabase
-import br.com.fernandosini.bookishadventure.screens.ViewModel.PermissionViewModel
-import br.com.fernandosini.bookishadventure.screens.ViewModel.SplashViewModel
+import br.com.fernandosini.bookishadventure.screens.viewmodel.PermissionViewModel
+import br.com.fernandosini.bookishadventure.screens.viewmodel.SplashViewModel
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
 import kotlinx.coroutines.delay
@@ -107,7 +104,7 @@ class Splash(private val appDatabase: AppDatabase, private var navController: Na
                     if (permissionViewModel.isAllPermissionsGranted.value) {
                        state.isLoading = true
                         delay(5.seconds)
-                        navController.navigate("login") {
+                        navController.navigate("base") {
                             popUpTo("splash") { inclusive = true }
                         }
                     state.isLoading
@@ -127,7 +124,7 @@ class Splash(private val appDatabase: AppDatabase, private var navController: Na
             Scaffold(
                 snackbarHost = { SnackbarHost(snackbarHostState) },
                 modifier = Modifier.fillMaxSize(),
-                containerColor = Color.Black,
+                containerColor = MaterialTheme.colorScheme.background,
                 contentWindowInsets = WindowInsets.systemBars,
 
                 ) {

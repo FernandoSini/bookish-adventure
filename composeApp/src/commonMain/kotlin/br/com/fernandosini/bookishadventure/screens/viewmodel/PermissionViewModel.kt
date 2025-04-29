@@ -1,4 +1,4 @@
-package br.com.fernandosini.bookishadventure.screens.ViewModel
+package br.com.fernandosini.bookishadventure.screens.viewmodel
 
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
@@ -11,7 +11,6 @@ import dev.icerock.moko.permissions.DeniedAlwaysException
 import dev.icerock.moko.permissions.DeniedException
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
-import dev.icerock.moko.permissions.RequestCanceledException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 

@@ -1,4 +1,4 @@
-package br.com.fernandosini.bookishadventure.screens.ViewModel.states
+package br.com.fernandosini.bookishadventure.screens.viewmodel.states
 
 import com.russhwolf.settings.Settings
 

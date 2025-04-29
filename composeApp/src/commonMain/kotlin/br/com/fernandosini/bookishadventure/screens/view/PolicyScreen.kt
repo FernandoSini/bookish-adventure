@@ -19,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowBackIos
@@ -26,6 +27,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -74,8 +76,9 @@ import org.jetbrains.compose.resources.stringResource
 
 class PolicyScreen(
     private val navController: NavController,
-    private val savedStateHandle: SavedStateHandle?
-) {
+    private val savedStateHandle: SavedStateHandle?,
+
+    ) {
     val localAppLocalization = compositionLocalOf {
         "en-US"
     }
@@ -99,7 +102,12 @@ class PolicyScreen(
         LaunchedEffect(Unit) {
             //textState = Res.readBytes("files/privacy_policy_en.txt").decodeToString()
             when (policyType) {
-                "privacy_policy" -> renderPrivacyPolicyAssets(scope, textState = textState, currentLocale)
+                "privacy_policy" -> renderPrivacyPolicyAssets(
+                    scope,
+                    textState = textState,
+                    currentLocale
+                )
+
                 "terms_of_use" -> renderUseTermsAssets(scope, textState = textState, currentLocale)
                 "billing_policy" -> renderBillingPolicyAssets(
                     scope,
@@ -141,9 +149,10 @@ class PolicyScreen(
 
         CompositionLocalProvider(localAppLocalization provides currentLocale) {
             Scaffold(
-                modifier = Modifier.navigationBarsPadding().fillMaxSize(),
-                contentWindowInsets = WindowInsets.systemBars,
-                backgroundColor = Color.Black,
+                modifier = Modifier.navigationBarsPadding()
+                    .fillMaxSize(),
+                contentWindowInsets = ScaffoldDefaults.contentWindowInsets,
+                backgroundColor = MaterialTheme.colorScheme.background,
                 topBar = {
                     CenterAlignedTopAppBar(
                         colors = TopAppBarDefaults.topAppBarColors(
@@ -152,20 +161,13 @@ class PolicyScreen(
                         title = {
                             if (getPlatform().name.lowercase().contains("ios")) {
                                 Text(
-                                    stringResource(titleState.value), style = TextStyle(
-                                        color = Color.White,
-                                        fontFamily = FontFamily(
-                                            Font(Res.font.DMSans_SemiBold)
-                                        ),
-                                        fontSize = 20.sp,
-                                    ),
+                                    stringResource(titleState.value),
+                                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp),
                                     modifier = Modifier.padding(start = 10.dp)
                                 )
                             } else {
                                 null
                             }
-
-
                         },
                         modifier = Modifier,
                         navigationIcon = {
@@ -174,7 +176,7 @@ class PolicyScreen(
                                     IconButton(onClick = { navController.popBackStack() }) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                                            tint = Color.White,
+                                            tint = MaterialTheme.colorScheme.surfaceTint,
                                             contentDescription = null,
                                             modifier = Modifier.size(20.dp)
                                         )
@@ -196,7 +198,7 @@ class PolicyScreen(
                                 IconButton(onClick = { navController.popBackStack() }) {
                                     Icon(
                                         imageVector = Icons.AutoMirrored.Default.ArrowBackIos,
-                                        tint = Color.White,
+                                        tint = MaterialTheme.colorScheme.surfaceTint,
                                         contentDescription = null,
                                         modifier = Modifier.size(20.dp)
                                     )
@@ -206,21 +208,18 @@ class PolicyScreen(
                         }
                     )
                 }) {
-                Column(
-                    Modifier.padding(bottom = it.calculateBottomPadding()).wrapContentSize(),
-                    verticalArrangement = Arrangement.spacedBy(20.dp),
-                ) { }
                 Text(
                     textState.value,
                     modifier = Modifier
                         .wrapContentHeight().verticalScroll(scrollState, enabled = true)
                         .padding(bottom = 30.dp, end = 10.dp),
-                    textAlign = TextAlign.Justify,
-                    style = TextStyle(textIndent = TextIndent(firstLine = 10.sp, restLine = 10.sp)),
-                    color = Color.White,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        textIndent = TextIndent(firstLine = 10.sp, restLine = 10.sp),
+                        textAlign = TextAlign.Justify,
+                    ),
                     softWrap = true
                 )
-                //   Text("$textState", color = Color.White)
+
             }
 
         }
@@ -273,80 +272,80 @@ class PolicyScreen(
         }
     }
 
-        @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
-        fun renderTermsOfServiceAssets(
-            scope: CoroutineScope,
-            textState: MutableState<String>,
-            currentLanguage: String
-        ) {
-            scope.launch {
-                try {
+    @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
+    fun renderTermsOfServiceAssets(
+        scope: CoroutineScope,
+        textState: MutableState<String>,
+        currentLanguage: String
+    ) {
+        scope.launch {
+            try {
 
 
-                    textState.value = when (currentLanguage) {
-                        "en-US" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
-                        "en_US" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
-                        "en" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
-                        "pt-BR" -> Res.readBytes("files/terms_of_service_pt_br.txt")
-                            .decodeToString()
-
-                        "pt_BR" -> Res.readBytes("files/terms_of_service_pt_br.txt")
-                            .decodeToString()
-
-                        "pt" -> Res.readBytes("files/terms_of_service_pt_br.txt").decodeToString()
-                        else -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
-
-                    }
-                } catch (e: Exception) {
-                    textState.value = "Error loading policy"
-                    println("terms of service error: ${e.message}")
-                }
-            }
-        }
-
-        @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
-        fun renderUseTermsAssets(
-            scope: CoroutineScope,
-            textState: MutableState<String>,
-            currentLanguage: String
-        ) {
-            scope.launch {
-                try {
-                    textState.value = when (currentLanguage) {
-                        "en-US" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
-                        "en_US" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
-                        "en" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
-                        "pt-BR" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
-                        "pt_BR" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
-                        "pt" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
-                        else -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
-                    }
-                } catch (e: Exception) {
-                    textState.value = "Error loading policy"
-                    println("terms use error: ${e.message}")
-                }
-            }
-        }
-
-        @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
-        fun renderBillingPolicyAssets(
-            scope: CoroutineScope,
-            textState: MutableState<String>,
-            currentLanguage: String
-        ) {
-            scope.launch {
                 textState.value = when (currentLanguage) {
-                    "en-US" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
-                    "en_US" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
-                    "en" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
-                    "pt-BR" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
-                    "pt_BR" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
-                    "pt" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
-                    else -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
+                    "en-US" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
+                    "en_US" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
+                    "en" -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
+                    "pt-BR" -> Res.readBytes("files/terms_of_service_pt_br.txt")
+                        .decodeToString()
+
+                    "pt_BR" -> Res.readBytes("files/terms_of_service_pt_br.txt")
+                        .decodeToString()
+
+                    "pt" -> Res.readBytes("files/terms_of_service_pt_br.txt").decodeToString()
+                    else -> Res.readBytes("files/terms_of_service_en.txt").decodeToString()
 
                 }
+            } catch (e: Exception) {
+                textState.value = "Error loading policy"
+                println("terms of service error: ${e.message}")
             }
         }
+    }
+
+    @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
+    fun renderUseTermsAssets(
+        scope: CoroutineScope,
+        textState: MutableState<String>,
+        currentLanguage: String
+    ) {
+        scope.launch {
+            try {
+                textState.value = when (currentLanguage) {
+                    "en-US" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
+                    "en_US" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
+                    "en" -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
+                    "pt-BR" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
+                    "pt_BR" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
+                    "pt" -> Res.readBytes("files/terms_of_use_pt_br.txt").decodeToString()
+                    else -> Res.readBytes("files/terms_of_use_en.txt").decodeToString()
+                }
+            } catch (e: Exception) {
+                textState.value = "Error loading policy"
+                println("terms use error: ${e.message}")
+            }
+        }
+    }
+
+    @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
+    fun renderBillingPolicyAssets(
+        scope: CoroutineScope,
+        textState: MutableState<String>,
+        currentLanguage: String
+    ) {
+        scope.launch {
+            textState.value = when (currentLanguage) {
+                "en-US" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
+                "en_US" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
+                "en" -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
+                "pt-BR" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
+                "pt_BR" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
+                "pt" -> Res.readBytes("files/billing_policy_pt_br.txt").decodeToString()
+                else -> Res.readBytes("files/billing_policy_en.txt").decodeToString()
+
+            }
+        }
+    }
 
 
 }

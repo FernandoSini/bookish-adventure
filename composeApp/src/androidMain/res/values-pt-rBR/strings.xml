@@ -19,4 +19,25 @@
     <string name="favorite">Favoritos</string>
     <string name="Home">Home</string>
     <string name="flights">Vôos</string>
+    <string name="verify_code_title">Verificação</string>
+    <string name="verify_code_description">Foi-lhe enviado um código de verificação de 5 digítos</string>
+    <string name="didnt_receive_code">Não recebeu o código?</string>
+    <string name="resend">Reenviar</string>
+    <string name="verify_code_continue">Continuar</string>
+    <string name="forgot_password">Esqueceu sua senha?</string>
+    <string name="terms_service_button">Ao registrar, eu concordo com os</string>
+    <string name="edit_profile">Editar perfil</string>
+    <string name="subscription">Assinatura</string>
+    <string name="billing_history">Histórico de compra</string>
+    <string name="change_billing">Trocar pagamanto</string>
+    <string name="price">Preço</string>
+    <string name="total_price">Preço total</string>
+    <string name="Date">Data</string>
+    <string name="id_transaction">ID Transação</string>
+    <string name="card_holder">Titular do cartão</string>
+    <string name="card_number">Número do cartão</string>
+    <string name="payment_status">Status de pagamento</string>
+    <string name="save">Salvar</string>
+    <string name="delete_account">Deletar conta</string>
+    <string name="rate_app">Avalie nosso app</string>
 </resources>

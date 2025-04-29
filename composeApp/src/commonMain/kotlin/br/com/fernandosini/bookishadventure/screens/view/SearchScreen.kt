@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.TopAppBarColors
@@ -58,8 +59,9 @@ class SearchScreen(private var navController: NavController) {
     @Composable
     fun Content() {
         var text by remember { mutableStateOf("") }
-        Scaffold(modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.Black,
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            backgroundColor = MaterialTheme.colorScheme.background,
             topBar = {
                 CenterAlignedTopAppBar(
                     expandedHeight = 100.dp,
@@ -84,7 +86,7 @@ class SearchScreen(private var navController: NavController) {
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
-                                backgroundColor = Color(0xff1E1E1E),
+                                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
                                 textColor = Color(0xffA3A0A0),
                             ),
                             value = text,

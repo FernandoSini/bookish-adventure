@@ -1,20 +1,13 @@
-package br.com.fernandosini.bookishadventure.screens.ViewModel
+package br.com.fernandosini.bookishadventure.screens.viewmodel
 
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.RoomDatabase
-import br.com.fernandosini.bookishadventure.repository.db.AppDatabase
-import br.com.fernandosini.bookishadventure.repository.db.getRoomDatabase
-import br.com.fernandosini.bookishadventure.screens.ViewModel.states.SplashState
-import com.russhwolf.settings.Settings
+import br.com.fernandosini.bookishadventure.screens.viewmodel.states.SplashState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
 
@@ -55,7 +48,6 @@ class SplashViewModel : ViewModel() {
     fun setFirstTimeInApp(value: Boolean) {
         _state.value.settings.putBoolean("firstTimeInApp", value)
         _state.value.isFirstTime = value
-
     }
 
 

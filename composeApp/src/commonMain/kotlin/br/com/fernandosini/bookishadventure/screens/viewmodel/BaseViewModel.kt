@@ -1,15 +1,13 @@
-package br.com.fernandosini.bookishadventure.screens.ViewModel
+package br.com.fernandosini.bookishadventure.screens.viewmodel
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.lifecycle.ViewModel
 import bookishadventure.composeapp.generated.resources.Home
 import bookishadventure.composeapp.generated.resources.Res
 import bookishadventure.composeapp.generated.resources.account
-import bookishadventure.composeapp.generated.resources.favorite
 import bookishadventure.composeapp.generated.resources.flights
 import bookishadventure.composeapp.generated.resources.plane_filled
 import bookishadventure.composeapp.generated.resources.search

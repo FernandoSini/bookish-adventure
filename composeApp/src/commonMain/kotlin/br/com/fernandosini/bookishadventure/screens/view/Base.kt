@@ -1,18 +1,12 @@
 package br.com.fernandosini.bookishadventure.screens.view
 
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
@@ -23,6 +17,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -35,18 +30,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import bookishadventure.composeapp.generated.resources.DMSans_Light
 import bookishadventure.composeapp.generated.resources.Res
 import br.com.fernandosini.bookishadventure.getPlatform
 
 import br.com.fernandosini.bookishadventure.repository.db.AppDatabase
-import br.com.fernandosini.bookishadventure.screens.ViewModel.BaseViewModel
+import br.com.fernandosini.bookishadventure.screens.viewmodel.BaseViewModel
+import br.com.fernandosini.bookishadventure.screens.viewmodel.ThemeViewModel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.StringResource
@@ -56,7 +50,7 @@ import org.jetbrains.compose.resources.stringResource
 class Base(private val appDatabase: AppDatabase) {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Content() {
+    fun Content(themeViewModel: ThemeViewModel) {
         val navigator = rememberNavController()
         val baseViewModel = viewModel<BaseViewModel> { BaseViewModel() }
         val currentDestination by navigator.currentBackStackEntryAsState()
@@ -64,7 +58,7 @@ class Base(private val appDatabase: AppDatabase) {
             currentDestination?.destination?.route in baseViewModel.bottomMenuItems.value.map { it["screen"] }
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.Black,
+            backgroundColor = MaterialTheme.colorScheme.background,
             isFloatingActionButtonDocked = false,
             floatingActionButtonPosition = FabPosition.End,
 
@@ -93,7 +87,7 @@ class Base(private val appDatabase: AppDatabase) {
             bottomBar = {
                 if (showBottomNav) {
                     BottomAppBar(
-                        backgroundColor = Color.Black,
+                        backgroundColor = MaterialTheme.colorScheme.background,
                         cutoutShape = CircleShape,
                         modifier = if (getPlatform().name.lowercase()
                                 .contains("ios")
@@ -116,15 +110,14 @@ class Base(private val appDatabase: AppDatabase) {
                                     selected = currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true,
                                     enabled = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true) false else true,
                                     selectedContentColor = Color(0xffC6E2FF),
-                                    unselectedContentColor = Color.White,
-
+                                    unselectedContentColor = MaterialTheme.colorScheme.inversePrimary,
                                     label = {
                                         Text(
                                             stringResource(element["label"] as StringResource),
                                             color = if (currentDestination?.destination?.hierarchy?.any { it.route == element["screen"].toString() } == true)
                                                 Color(
                                                     0xffC6E2FF
-                                                ) else Color.White,
+                                                ) else MaterialTheme.colorScheme.inversePrimary,
                                             fontFamily = FontFamily(
                                                 Font(Res.font.DMSans_Light)
                                             ),
@@ -205,7 +198,7 @@ class Base(private val appDatabase: AppDatabase) {
             ) {
 
                 composable("home") {
-                    Home(navController = navigator).Content()
+                    Home(navController = navigator).Content(themeViewModel)
                 }
                 composable("account") {
                     AccountScreen(navController = navigator).Content()
@@ -217,15 +210,18 @@ class Base(private val appDatabase: AppDatabase) {
                     SearchScreen(navController = navigator).Content()
                 }
                 composable("settings") {
-                    Settings(navController = navigator).Content()
+                    Settings(navController = navigator).Content(themeViewModel)
                 }
                 composable(
                     //"policy/{policyType}",
                     "policy"
-                  //  arguments = listOf(navArgument("policyType") { type = NavType.StringType })
+                    //  arguments = listOf(navArgument("policyType") { type = NavType.StringType })
                 ) {
-                   // val policyType = it.arguments?.getString("policyType") ?: "privacy_policy"
-                    PolicyScreen(navController = navigator,it.savedStateHandle).Content()
+                    // val policyType = it.arguments?.getString("policyType") ?: "privacy_policy"
+                    PolicyScreen(navController = navigator, it.savedStateHandle).Content()
+                }
+                composable("profile/edit") {
+                    EditProfile(navController = navigator, it.savedStateHandle).Content(themeViewModel)
                 }
             }
 

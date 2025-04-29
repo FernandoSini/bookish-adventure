@@ -1,8 +1,10 @@
 [versions]
 #agp = "8.5.2"
 adaptive = "1.0.1"
-adaptiveNavigationVersion = "1.0.0-alpha03"
+#adaptiveNavigationVersion = "1.0.0-alpha03"
 agp = "8.7.3"
+chart = "Beta-0.0.5"
+bignum = "0.3.9"
 coilCompose = "3.0.4"
 coilKtCoilCompose = "3.0.4"
 coilNetworkKtor3Version = "3.0.4"
@@ -19,14 +21,19 @@ androidx-espresso-core = "3.6.1"
 androidx-lifecycle = "2.8.4"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
-compose-multiplatform = "1.7.0"
+#compose-multiplatform = "1.7.0"
+compose-multiplatform = "1.8.0-rc01"
+composeWebviewMultiplatform = "1.9.40"
 junit = "4.13.2"
 kotlin = "2.1.0"
 coroutinesVersion = "1.10.1"
-ktor="3.0.1"
+ktor="3.1.0"
 lifecycleViewmodelComposeVersion = "2.8.3"
+#materialNavigation = "1.7.0-beta02"
+materialNavigation = "1.8.0-beta02"
 multiplatformSettingsNoArgVersion = "1.1.1"
-navigationCompose = "2.8.0-alpha10"
+#navigationCompose = "2.8.0-alpha10"
+navigationCompose = "2.9.0-alpha16"
 permissionsCompose = "0.18.0"
 activityKtx = "1.9.3"
 dateTimeVersion = "0.6.0"
@@ -36,7 +43,8 @@ androidxRoom = "2.7.0-alpha13"
 #ksp="2.0.21-1.0.27"
 ksp="2.1.0-1.0.29"
 #sqlite = "2.5.0-SNAPSHOT"
-rules = "1.6.1"
+#rules = "1.6.1"
+rules = "1.4.0"
 runner = "1.6.2"
 sqlite = "2.5.0-alpha12"
 mediaPlayerKMP = "2.0.6"
@@ -45,24 +53,36 @@ firebase-gitlive-sdk = "2.1.0"
 gradlePlugins-crashlytics = "3.0.3"
 gradlePlugins-google-services = "4.4.2"
 purchases-kmp = "1.6.1+13.21.0"
-test-manifest= "1.7.8"
+startupRuntime = "1.1.1"
+#test-manifest= "1.7.8"
+test-manifest= "1.8.0-beta01"
 firebase-core="21.1.1"
 firebase-config="21.0.0"
 firebase-crashlytics-ktx="19.0.0"
-firebase-crashlytics="3.0.3"
+firebase-crashlytics="19.0.0"
+uiautomator = "2.3.0"
+window-size-version="1.7.3"
+assertk = "0.28.1"
 
 
 
 [libraries]
-adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "adaptiveNavigationVersion" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "adaptive" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+android-window-size= {module="org.jetbrains.compose.material3:material3-window-size-class", version.ref="window-size-version"}
+androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "test-manifest" }
+androidx-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
+bignum = { module = "com.ionspin.kotlin:bignum", version.ref = "bignum" }
+chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
 coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coilSvg" }
 coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilKtCoilCompose" }
 coil3-coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coilNetworkKtor3Version" }
+compose-webview-multiplatform = { module = "io.github.kevinnzou:compose-webview-multiplatform", version.ref = "composeWebviewMultiplatform" }
 jetbrains-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "adaptive" }
-jetbrains-adaptive-navigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "adaptiveNavigationVersion" }
+jetbrains-adaptive-navigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "adaptive" }
 jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelComposeVersion" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -85,6 +105,8 @@ ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktor" }
+material-navigation = { module = "org.jetbrains.compose.material:material-navigation", version.ref = "materialNavigation" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "permissionsCompose" }
 russhwolf-multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatformSettingsNoArgVersion" }
@@ -110,6 +132,7 @@ firebase-config ={module="com.google.firebase:firebase-config-ktx", version.ref=
 firebase-crashlytics ={module="com.google.firebase:firebase-crashlytics", version.ref="firebase-crashlytics"}
 firebase-crashlytics-ktx ={module="com.google.firebase:firebase-crashlytics-ktx", version.ref="firebase-crashlytics-ktx"}
 firebase-common ={module="com.google.firebase:firebase-common", version.ref="firebase-config"}
+
 
 
 [plugins]

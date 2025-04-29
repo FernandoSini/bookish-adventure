@@ -1,4 +1,4 @@
-package br.com.playtips.routes
+package br.com.fernandosini.bookishadventure.routes
 
 object HttpRoutes {
     private const val BASE_URL: String = "https://api.livecoinwatch.com/";

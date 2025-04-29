@@ -9,20 +9,17 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import bookishadventure.composeapp.generated.resources.DMSans_SemiBold
 import bookishadventure.composeapp.generated.resources.Res
 import bookishadventure.composeapp.generated.resources.flights
 import br.com.fernandosini.bookishadventure.getPlatform
-import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource
 
 class Flights(private var navController: NavController) {
@@ -30,6 +27,7 @@ class Flights(private var navController: NavController) {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Content() {
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             backgroundColor = Color.Transparent,
@@ -44,13 +42,8 @@ class Flights(private var navController: NavController) {
                     navigationIcon = {
                         if (getPlatform().name.lowercase().contains("android")) {
                             Text(
-                                stringResource(Res.string.flights), style = TextStyle(
-                                    color = Color.White,
-                                    fontFamily = FontFamily(
-                                        Font(Res.font.DMSans_SemiBold)
-                                    ),
-                                    fontSize = 20.sp,
-                                ),
+                                stringResource(Res.string.flights),
+                                style = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp),
                                 modifier = Modifier.padding(start = 10.dp)
                             )
                         } else {
@@ -60,13 +53,8 @@ class Flights(private var navController: NavController) {
                     title = {
                         if (getPlatform().name.lowercase().contains("ios")) {
                             Text(
-                                stringResource(Res.string.flights), style = TextStyle(
-                                    color = Color.White,
-                                    fontFamily = FontFamily(
-                                        Font(Res.font.DMSans_SemiBold)
-                                    ),
-                                    fontSize = 20.sp,
-                                ),
+                                stringResource(Res.string.flights),
+                                style = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp),
                                 modifier = Modifier.padding(start = 10.dp)
                             )
                         } else {

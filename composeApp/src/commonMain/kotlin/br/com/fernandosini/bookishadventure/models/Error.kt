@@ -1,4 +1,4 @@
-package br.com.playtips.models
+package br.com.fernandosini.bookishadventure.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

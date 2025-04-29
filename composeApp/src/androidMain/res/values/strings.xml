@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BookishAdventure</string>
     <string name="hello">Hello</string>
     <string name="welcome">Welcome</string>
@@ -19,5 +19,26 @@
     <string name="favorite">Favorite</string>
     <string name="Home">Home</string>
     <string name="flights">Flights</string>
+    <string name="verify_code_title">Verification</string>
+    <string name="verify_code_description">We sent you a text message or email with a 5-digit code</string>
+    <string name="didnt_receive_code">Did not receive a code?</string>
+    <string name="resend">Resend</string>
+    <string name="verify_code_continue">Continue</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="terms_service_button">By registering I agree to the</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="subscription">Subscription</string>
+    <string name="billing_history">Billing history</string>
+    <string name="change_billing">Change billing</string>
+    <string name="price">Price</string>
+    <string name="total_price">Total Price</string>
+    <string name="Date">Date</string>
+    <string name="id_transaction">ID Transaction</string>
+    <string name="card_holder">Card Holder</string>
+    <string name="card_number">Card Number</string>
+    <string name="payment_status">Payment Status</string>
+    <string name="save">Save</string>
+    <string name="delete_account">Delete account</string>
+    <string name="rate_app">Rate our app</string>
 </resources>
 

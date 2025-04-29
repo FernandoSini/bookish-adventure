@@ -28,6 +28,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScaffoldDefaults
@@ -46,6 +48,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,8 +59,10 @@ import bookishadventure.composeapp.generated.resources.DMSans_Bold
 import bookishadventure.composeapp.generated.resources.DMSans_Medium
 import bookishadventure.composeapp.generated.resources.DMSans_Regular
 import bookishadventure.composeapp.generated.resources.Res
+import bookishadventure.composeapp.generated.resources.forgot_password
 import br.com.fernandosini.bookishadventure.repository.db.AppDatabase
 import org.jetbrains.compose.resources.Font
+import org.jetbrains.compose.resources.stringResource
 
 class Login(private val appDatabase: AppDatabase, private var navController: NavController) {
 
@@ -66,7 +73,7 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
         val passwordText = mutableStateOf<String>("")
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            containerColor = Color.Black,
+            containerColor = MaterialTheme.colorScheme.background,
             contentWindowInsets = ScaffoldDefaults.contentWindowInsets,
             topBar = {
                 CenterAlignedTopAppBar(
@@ -88,8 +95,7 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
                             //     )
                             // }
                         }
-                    }
-                )
+                    })
             }
 
         ) {
@@ -101,19 +107,15 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
             ) {
 
                 BoxWithConstraints(
-                    modifier = Modifier.fillMaxWidth()
-                        .fillMaxHeight(0.25f).wrapContentSize(Alignment.TopStart)
-                        .padding(horizontal = 25.dp),
-                    contentAlignment = Alignment.TopStart, propagateMinConstraints = false
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight(0.25f)
+                        .wrapContentSize(Alignment.TopStart).padding(horizontal = 25.dp),
+                    contentAlignment = Alignment.TopStart,
+                    propagateMinConstraints = false
                 ) {
 
                     Text(
                         "Login",
-                        style = TextStyle(
-                            fontFamily = FontFamily(Font(Res.font.DMSans_Bold)),
-                            fontSize = 50.sp,
-                            color = Color.White
-                        ),
+                        style = MaterialTheme.typography.displayMedium
                     )
                 }
                 BoxWithConstraints(
@@ -128,14 +130,23 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
                             value = loginText.value,
                             onValueChange = { it -> loginText.value = it },
                             placeHolder = "Email",
-                            textColor = Color.White
+                            textColor = Color.White,
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.inversePrimary,
+                                fontFamily = FontFamily(Font(Res.font.DMSans_Medium))
+                            ),
                         )
                         LinedTextField(
                             value = passwordText.value,
                             onValueChange = { it -> passwordText.value = it },
                             placeHolder = "Password",
-                            textColor = Color.White
-                        )
+                            textColor = Color.White,
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.inversePrimary,
+                                fontFamily = FontFamily(Font(Res.font.DMSans_Medium))
+                            ),
+
+                            )
                         Row(
                             horizontalArrangement = Arrangement.End,
                             modifier = Modifier.fillMaxWidth()
@@ -144,7 +155,7 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
                                 onClick = {},
                             ) {
                                 Text(
-                                    "Forgot Password?",
+                                    stringResource(Res.string.forgot_password),
                                     style = TextStyle(
                                         fontFamily = FontFamily(Font(Res.font.DMSans_Medium)),
                                         fontSize = 13.sp,
@@ -169,22 +180,18 @@ class Login(private val appDatabase: AppDatabase, private var navController: Nav
                                 fontSize = 13.sp, fontFamily = FontFamily(
                                     Font(Res.font.DMSans_Bold)
                                 ), color = Color.White
-                            ), {}
-                        )
+
+                            ), {})
                         Spacer(Modifier.height(20.dp))
                         CustomOutlinedButton(
                             "Register", onClick = {
-                                navController.navigate("signUp"){
-                                    popUpTo("splash"){
-                                        inclusive=true
+                                navController.navigate("signUp") {
+                                    popUpTo("login") {
+                                        inclusive = true
                                     }
                                 }
-
-                            }, textStyle = TextStyle(
-                                fontSize = 13.sp, fontFamily = FontFamily(
-                                    Font(Res.font.DMSans_Bold)
-                                ), color = Color.White
-                            )
+                            },
+                            textStyle = MaterialTheme.typography.titleSmall
                         )
 
                     }
@@ -208,49 +215,121 @@ fun LinedTextField(
     textColor: Color,
     trailingIcon: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    passwordVisible: Boolean? = null,
+    modifier: Modifier = Modifier.fillMaxWidth().height(60.dp),
+    textStyle: TextStyle = LocalTextStyle.current,
+    maxLines: Int = 1,
+    minLines: Int = 1,
+    singleLine: Boolean = false,
+    supportingText: @Composable (() -> Unit)? = null,
 ) {
     TextField(
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text(placeHolder) },
-        singleLine = true,
+        placeholder = {
+            Text(
+                placeHolder,
+                style = MaterialTheme.typography.bodySmall.copy(
+                    color = MaterialTheme.colorScheme.inversePrimary,
+                    fontSize = 15.sp,
+                    fontFamily = FontFamily(Font(Res.font.DMSans_Medium))
+                ),
+            )
+        },
+        singleLine = singleLine,
         keyboardOptions = keyboardOptions,
-        keyboardActions =keyboardActions,
-        modifier = Modifier.fillMaxWidth().height(60.dp),
+        keyboardActions = keyboardActions,
+        modifier = modifier,
         trailingIcon = trailingIcon,
+        textStyle = textStyle,
+        maxLines = maxLines,
+        minLines = minLines,
+        visualTransformation = if (passwordVisible != null && !passwordVisible) {
+            PasswordVisualTransformation()
+        } else {
+            VisualTransformation.None
+        },
         colors = TextFieldDefaults.colors(
+            cursorColor = MaterialTheme.colorScheme.outlineVariant,
             focusedTextColor = textColor,
             unfocusedContainerColor = Color.Transparent,
             focusedContainerColor = Color.Transparent,
-            focusedIndicatorColor = Color.White,
-            unfocusedIndicatorColor = Color.White
-        )
+            focusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+            unfocusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
+            unfocusedTextColor = textColor
+        ),
+        supportingText = supportingText
     )
 }
 
 @Composable
-fun CustomElevatedButton(placeholder: String, textStyle: TextStyle, onClick: () -> Unit) {
+fun CustomElevatedButton(
+    placeholder: String,
+    textStyle: TextStyle = TextStyle(
+        fontSize = 13.sp, fontFamily = FontFamily(
+            Font(Res.font.DMSans_Bold)
+        ), color = Color.White
+    ),
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth().height(50.dp),
+    trailingIcon: @Composable (() -> Unit)? = null,
+) {
     ElevatedButton(
-        modifier = Modifier.fillMaxWidth().height(50.dp),
-        onClick = onClick, shape = RoundedCornerShape(10.dp),
+        modifier = modifier,
+        onClick = onClick,
+        shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.elevatedButtonColors(
-            containerColor = Color(0xff3449A7), contentColor = Color.White
-        )
+            containerColor = Color(0xff3449A7),
+            contentColor = Color.White
+        ),
     ) {
-        Text(placeholder, softWrap = true, style = textStyle)
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Absolute.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+
+
+            ) {
+            if (trailingIcon != null) {
+                Spacer(Modifier.width(30.dp))
+            } else {
+                Spacer(
+                    Modifier.width(IntrinsicSize.Min)
+                )
+            }
+            Text(placeholder, softWrap = true, style = textStyle)
+            if (trailingIcon != null) {
+                trailingIcon()
+            } else {
+                Spacer(Modifier.width(IntrinsicSize.Min))
+            }
+
+        }
     }
 }
 
 @Composable
-fun CustomOutlinedButton(placeholder: String, textStyle: TextStyle, onClick: () -> Unit) {
+fun CustomOutlinedButton(
+    placeholder: String,
+    textStyle: TextStyle,
+    onClick: () -> Unit,
+    containerColor: Color = Color.Transparent,
+    contentColor: Color = Color.White,
+    disabledContentColor: Color = Color.Unspecified,
+    disabledContainerColor: Color = Color.Unspecified,
+) {
     OutlinedButton(
         modifier = Modifier.fillMaxWidth().height(50.dp),
         onClick = onClick,
         shape = RoundedCornerShape(10.dp),
-        border = BorderStroke(1.dp, Color.White),
+        border = BorderStroke(1.dp, contentColor),
         colors = ButtonDefaults.outlinedButtonColors(
-            containerColor = Color.Transparent, contentColor = Color.White
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContentColor = disabledContentColor,
+            disabledContainerColor = disabledContainerColor
+
         )
     ) {
         Text(placeholder, softWrap = true, style = textStyle)

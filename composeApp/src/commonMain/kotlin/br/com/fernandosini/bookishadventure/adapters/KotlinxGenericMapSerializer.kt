@@ -1,4 +1,4 @@
-package br.com.playtips.adapters
+package br.com.fernandosini.bookishadventure.adapters
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
