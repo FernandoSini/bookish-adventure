@@ -40,5 +40,7 @@
     <string name="save">Save</string>
     <string name="delete_account">Delete account</string>
     <string name="rate_app">Rate our app</string>
+    <string name="continue_text">Continue</string>
+    <string name="cancel_anytime">Cancel anytime.</string>
 </resources>
 

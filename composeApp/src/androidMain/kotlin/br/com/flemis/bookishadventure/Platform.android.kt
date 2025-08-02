@@ -1,0 +1,20 @@
+package br.com.flemis.bookishadventure
+
+import android.os.Build
+import androidx.compose.ui.text.intl.Locale
+
+class AndroidPlatform : Platform {
+    override val name: String = "Android ${Build.VERSION.SDK_INT}"
+    override val appVersion: String = BuildConfig.VERSION_NAME
+
+    fun getCurrentLocale(): String {
+        return Locale.current.language
+    }
+    fun ChangeLocale(locale:String){
+
+    }
+}
+
+actual fun getPlatformLocale(): String = AndroidPlatform().getCurrentLocale()
+actual fun getPlatform(): Platform = AndroidPlatform()
+

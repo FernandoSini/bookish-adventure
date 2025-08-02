@@ -11,17 +11,20 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		CE14D70B2DC9736F0036389D /* CustomUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14D70A2DC9736F0036389D /* CustomUserAgent.swift */; };
+		CE21AB8A2E0FB6530028AA22 /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21AB882E0FB6530028AA22 /* PermissionHelper.swift */; };
+		CE25562B2DC81C160076CF67 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B22D6637570095B756 /* FirebaseAnalytics */; settings = {ATTRIBUTES = (Required, ); }; };
 		CE3D121D2D8C9F4E007E32DD /* BookishAdventureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D121C2D8C9F4E007E32DD /* BookishAdventureUITests.swift */; };
 		CE3D121F2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D121E2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift */; };
-		CE9264B32D6637570095B756 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B22D6637570095B756 /* FirebaseAnalytics */; };
+		CE4A294F2DC81B29007E805A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE4A294E2DC81B29007E805A /* FirebaseCore */; };
+		CE8A218E2DEE1CA500938A45 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B82D6637570095B756 /* FirebaseAppCheck */; };
 		CE9264B52D6637570095B756 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B42D6637570095B756 /* FirebaseAnalyticsOnDeviceConversion */; };
 		CE9264B72D6637570095B756 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B62D6637570095B756 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		CE9264B92D6637570095B756 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B82D6637570095B756 /* FirebaseAppCheck */; };
 		CE9264BB2D6637570095B756 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264BA2D6637570095B756 /* FirebaseAppDistribution-Beta */; };
 		CE9264BD2D663A020095B756 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264BC2D663A020095B756 /* FirebaseCrashlytics */; };
-		CE9264BF2D666AA20095B756 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9264BE2D666AA20095B756 /* GoogleService-Info.plist */; };
-		CE98BD762D77CC4A00A4D5A0 /* PurchasesHybridCommon in Frameworks */ = {isa = PBXBuildFile; productRef = CE98BD752D77CC4A00A4D5A0 /* PurchasesHybridCommon */; };
-		CE98BD782D77CC4A00A4D5A0 /* PurchasesHybridCommonUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE98BD772D77CC4A00A4D5A0 /* PurchasesHybridCommonUI */; };
+		CEF81A2C2E044D4C006D745F /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = CE24F3422DC5C0BA00F9745D /* RevenueCat */; };
+		CEF81A2D2E044D4C006D745F /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE24F3442DC5C0BA00F9745D /* RevenueCatUI */; };
+		CEFDAD9D2DE89653003F901F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEFDAD9C2DE89653003F901F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +45,12 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		CE14D70A2DC9736F0036389D /* CustomUserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserAgent.swift; sourceTree = "<group>"; };
+		CE21AB882E0FB6530028AA22 /* PermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionHelper.swift; sourceTree = "<group>"; };
 		CE3D121A2D8C9F4E007E32DD /* BookishAdventureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookishAdventureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3D121C2D8C9F4E007E32DD /* BookishAdventureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookishAdventureUITests.swift; sourceTree = "<group>"; };
 		CE3D121E2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookishAdventureUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CE9264BE2D666AA20095B756 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEFDAD9C2DE89653003F901F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,13 +58,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE98BD762D77CC4A00A4D5A0 /* PurchasesHybridCommon in Frameworks */,
-				CE9264B92D6637570095B756 /* FirebaseAppCheck in Frameworks */,
-				CE9264B32D6637570095B756 /* FirebaseAnalytics in Frameworks */,
+				CEF81A2D2E044D4C006D745F /* RevenueCatUI in Frameworks */,
+				CEF81A2C2E044D4C006D745F /* RevenueCat in Frameworks */,
+				CE8A218E2DEE1CA500938A45 /* FirebaseAppCheck in Frameworks */,
+				CE25562B2DC81C160076CF67 /* FirebaseAnalytics in Frameworks */,
 				CE9264BB2D6637570095B756 /* FirebaseAppDistribution-Beta in Frameworks */,
 				CE9264BD2D663A020095B756 /* FirebaseCrashlytics in Frameworks */,
 				CE9264B72D6637570095B756 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				CE98BD782D77CC4A00A4D5A0 /* PurchasesHybridCommonUI in Frameworks */,
+				CE4A294F2DC81B29007E805A /* FirebaseCore in Frameworks */,
 				CE9264B52D6637570095B756 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,11 +118,13 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE21AB892E0FB6530028AA22 /* Permissions */,
+				CE14D7082DC973510036389D /* user_agent */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				CE9264BE2D666AA20095B756 /* GoogleService-Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				CEFDAD9C2DE89653003F901F /* GoogleService-Info.plist */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosApp;
@@ -128,6 +136,22 @@
 				AB3632DC29227652001CCB65 /* Config.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		CE14D7082DC973510036389D /* user_agent */ = {
+			isa = PBXGroup;
+			children = (
+				CE14D70A2DC9736F0036389D /* CustomUserAgent.swift */,
+			);
+			path = user_agent;
+			sourceTree = "<group>";
+		};
+		CE21AB892E0FB6530028AA22 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				CE21AB882E0FB6530028AA22 /* PermissionHelper.swift */,
+			);
+			path = Permissions;
 			sourceTree = "<group>";
 		};
 		CE3D121B2D8C9F4E007E32DD /* BookishAdventureUITests */ = {
@@ -163,8 +187,9 @@
 				CE9264B82D6637570095B756 /* FirebaseAppCheck */,
 				CE9264BA2D6637570095B756 /* FirebaseAppDistribution-Beta */,
 				CE9264BC2D663A020095B756 /* FirebaseCrashlytics */,
-				CE98BD752D77CC4A00A4D5A0 /* PurchasesHybridCommon */,
-				CE98BD772D77CC4A00A4D5A0 /* PurchasesHybridCommonUI */,
+				CE24F3422DC5C0BA00F9745D /* RevenueCat */,
+				CE24F3442DC5C0BA00F9745D /* RevenueCatUI */,
+				CE4A294E2DC81B29007E805A /* FirebaseCore */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* BookishAdventure.app */;
@@ -197,7 +222,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
-				ORGANIZATIONNAME = orgName;
+				ORGANIZATIONNAME = Flemis;
 				TargetAttributes = {
 					7555FF7A242A565900829871 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -219,7 +244,7 @@
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
 				CE9264B12D6637570095B756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CE98BD742D77CC4A00A4D5A0 /* XCRemoteSwiftPackageReference "purchases-hybrid-common" */,
+				CE24F3412DC5C0BA00F9745D /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -238,7 +263,7 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
-				CE9264BF2D666AA20095B756 /* GoogleService-Info.plist in Resources */,
+				CEFDAD9D2DE89653003F901F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +304,8 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				CE21AB8A2E0FB6530028AA22 /* PermissionHelper.swift in Sources */,
+				CE14D70B2DC9736F0036389D /* CustomUserAgent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,21 +461,28 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6K2Y7RCH8;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)\n$(SRCROOT)/../composeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../composeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(BUNDLE_SHORT_VERSION)";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.bookishadventure;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.flemis.bookishadventure.iphone;
 				PRODUCT_NAME = "$(BUNDLE_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,21 +498,28 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6K2Y7RCH8;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)\n$(SRCROOT)/../composeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(SRCROOT)/../composeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_DISPLAY_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(BUNDLE_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(BUNDLE_SHORT_VERSION)";
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.bookishadventure;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.flemis.bookishadventure.iphone;
 				PRODUCT_NAME = "$(BUNDLE_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -496,10 +537,10 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.BookishAdventureUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.flemis.BookishAdventureUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -520,10 +561,10 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.BookishAdventureUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.flemis.BookishAdventureUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -565,6 +606,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE24F3412DC5C0BA00F9745D /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.22.2;
+			};
+		};
 		CE9264B12D6637570095B756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -573,17 +622,24 @@
 				minimumVersion = 11.8.1;
 			};
 		};
-		CE98BD742D77CC4A00A4D5A0 /* XCRemoteSwiftPackageReference "purchases-hybrid-common" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-hybrid-common";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 13.22.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE24F3422DC5C0BA00F9745D /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE24F3412DC5C0BA00F9745D /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		CE24F3442DC5C0BA00F9745D /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE24F3412DC5C0BA00F9745D /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		CE4A294E2DC81B29007E805A /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE9264B12D6637570095B756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
 		CE9264B22D6637570095B756 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE9264B12D6637570095B756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -613,16 +669,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE9264B12D6637570095B756 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		CE98BD752D77CC4A00A4D5A0 /* PurchasesHybridCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE98BD742D77CC4A00A4D5A0 /* XCRemoteSwiftPackageReference "purchases-hybrid-common" */;
-			productName = PurchasesHybridCommon;
-		};
-		CE98BD772D77CC4A00A4D5A0 /* PurchasesHybridCommonUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE98BD742D77CC4A00A4D5A0 /* XCRemoteSwiftPackageReference "purchases-hybrid-common" */;
-			productName = PurchasesHybridCommonUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

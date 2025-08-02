@@ -3,7 +3,7 @@
 //  BookishAdventureUITests
 //
 //  Created by Fernando Fazio Sinigaglia on 20/03/25.
-//  Copyright © 2025 orgName. All rights reserved.
+//  Copyright © 2025 Flemis. All rights reserved.
 //
 
 import XCTest

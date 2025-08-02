@@ -1,10 +1,12 @@
-import UIKit
-import SwiftUI
 import ComposeApp
+import SwiftUI
+import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
+        MainViewControllerKt.mainViewController(
+            nativeViewFactory: IosNativeViewFactory.shared
+        )
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
@@ -12,12 +14,10 @@ struct ComposeView: UIViewControllerRepresentable {
 
 struct ContentView: View {
     var body: some View {
+
         ComposeView()
-                .ignoresSafeArea(edges: .all)
-                .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
-                //.privacySensitive()
+            .ignoresSafeArea(edges: .all)
+            .ignoresSafeArea(.keyboard)  // Compose has own keyboard handler
+        //.privacySensitive()
     }
 }
-
-
-

@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:111866851038:android:650580b7d7d1346d289c4f",
+        "mobilesdk_app_id": "1:111866851038:android:7b7d460b5e8da538289c4f",
         "android_client_info": {
-          "package_name": "br.com.fernandosini.bookishadventure"
+          "package_name": "br.com.flemis.bookishadventure"
         }
       },
       "oauth_client": [],

@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>br.com.bookishadventure</string>
+	<string>br.com.flemis.bookishadventure.iphone</string>
 	<key>PROJECT_ID</key>
 	<string>bookish-adventure</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:111866851038:ios:fc30e1ebbd404a67289c4f</string>
+	<string>1:111866851038:ios:d40f1fe4c3f2eecc289c4f</string>
 </dict>
 </plist>
