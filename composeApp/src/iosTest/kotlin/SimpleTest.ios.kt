@@ -1,4 +1,4 @@
-import br.com.flemis.bookishadventure.core.domain.usecases.ThemeUseCase
+import br.com.flemis.bookishadventure.features.settings.domain.usecases.ThemeUseCase
 import br.com.flemis.bookishadventure.features.settings.data.repository.implementations.ThemeRepositoryImpl
 import br.com.flemis.bookishadventure.features.settings.presentation.ui.viewmodel.ThemeViewModel
 import br.com.flemis.bookishadventure.utils.Preferences

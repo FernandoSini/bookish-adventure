@@ -2,16 +2,16 @@ package br.com.flemis.bookishadventure.core.domain.usecases
 
 import br.com.flemis.bookishadventure.core.domain.models.User
 import br.com.flemis.bookishadventure.data.repository.UserRepository
-import br.com.flemis.bookishadventure.data.datasource.local.dao.models.UserEntity
+import br.com.flemis.bookishadventure.data.datasource.local.dao.models.UserModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class UserUseCase : KoinComponent {
     private val userRepository: UserRepository by inject()
-    suspend fun getUserDataFromLocal(userID: Long): Result<UserEntity> {
+    suspend fun getUserDataFromLocal(userID: Long): Result<UserModel> {
         val userData = userRepository.getUserFromLocal(userID)
         return when (userData) {
-            is UserEntity -> Result.success(userData)
+            is UserModel -> Result.success(userData)
             else -> Result.failure(Exception("User not found"))
         }
     }

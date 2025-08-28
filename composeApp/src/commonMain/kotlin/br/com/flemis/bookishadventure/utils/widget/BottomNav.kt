@@ -4,6 +4,10 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material3.ExperimentalMaterial3Api
+
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -17,6 +21,7 @@ import br.com.flemis.bookishadventure.features.profile.presentation.pages.EditPr
 import br.com.flemis.bookishadventure.presentation.pages.Flights
 import br.com.flemis.bookishadventure.features.home.presentation.pages.Home
 import br.com.flemis.bookishadventure.features.iap.presentation.pages.Paywall
+import br.com.flemis.bookishadventure.features.maps.presentation.pages.MapsView
 import br.com.flemis.bookishadventure.presentation.pages.PolicyScreen
 import br.com.flemis.bookishadventure.presentation.pages.SearchScreen
 import br.com.flemis.bookishadventure.features.settings.presentation.pages.Settings
@@ -50,8 +55,15 @@ class BottomNav {
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun renderNavPages(navigator: NavHostController, themeViewModel: ThemeViewModel) {
+    fun renderNavPages(
+        navigator: NavHostController,
+        themeViewModel: ThemeViewModel,
+        isOpenBottomSheet: Boolean,
+        bottomSheetState: ModalBottomSheetState,
+        isDisposedBottomSheet: Boolean
+    ) {
         return NavHost(
             navController = navigator,
             startDestination = "home",
@@ -92,7 +104,7 @@ class BottomNav {
                 AccountScreen(navController = navigator).Content()
             }
             composable("flights") {
-                Flights(navController = navigator).Content()
+                Flights(navController = navigator, isOpenBottomSheet, bottomSheetState, isDisposedBottomSheet).Content()
             }
             composable("search") {
                 SearchScreen(navController = navigator).Content()
@@ -120,11 +132,14 @@ class BottomNav {
             composable("subscription-details") {
                 // SubscriptionDetails(navController = navigator).Content()
             }
-            composable("billing-menu"){
-                 BillingMenu(navController = navigator).Content()
+            composable("billing-menu") {
+                BillingMenu(navController = navigator).Content()
             }
             composable("change-billing") {
                 // ChangeBilling(navController = navigator).Content()
+            }
+            composable("/maps") {
+                MapsView(navigator).renderMapsPage()
             }
         }
     }

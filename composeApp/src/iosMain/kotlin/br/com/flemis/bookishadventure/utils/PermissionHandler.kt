@@ -21,7 +21,7 @@ actual class PermissionHandler {
                     IOSPermissionStatus.Granted, IOSPermissionStatus.Restricted -> PermissionStatus.Granted
                     IOSPermissionStatus.Denied -> PermissionStatus.Denied
                     IOSPermissionStatus.NotDetermined -> PermissionStatus.NotDetermined
-                    else -> PermissionStatus.NotDetermined
+                  //  else -> PermissionStatus.NotDetermined
                 }
                 continuation.resume(mappedStatus)
             }
@@ -32,7 +32,7 @@ actual class PermissionHandler {
 
         actual suspend fun openAppSettings() {
             val url = NSURL(string = UIApplicationOpenSettingsURLString)
-            if (url != null && UIApplication.sharedApplication.canOpenURL(url)) {
+            if (UIApplication.sharedApplication.canOpenURL(url)) {
                 UIApplication.sharedApplication.openURL(url, options = emptyMap<Any?, Any>(), completionHandler = null)
             } else {
                 throw IllegalStateException("Cannot open app settings")
@@ -63,10 +63,10 @@ actual class PermissionHandler {
                     true
                 }
 
-                else -> {
+               /* else -> {
                     callback(PermissionStatus.NotDetermined)
                     false
-                }
+                }*/
             }
 
         }

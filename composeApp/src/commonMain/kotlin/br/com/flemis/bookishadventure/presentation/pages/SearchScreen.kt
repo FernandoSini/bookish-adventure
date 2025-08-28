@@ -1,5 +1,7 @@
 package br.com.flemis.bookishadventure.presentation.pages
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,56 +47,59 @@ class SearchScreen(private var navController: NavController) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             backgroundColor = MaterialTheme.colorScheme.background,
+
             topBar = {
                 CenterAlignedTopAppBar(
+                    modifier = Modifier.fillMaxWidth(),
                     expandedHeight = 100.dp,
                     colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
-                    windowInsets = WindowInsets.statusBars,
-                    title = {
-                        TextField(
-                            maxLines = 1,
-                            leadingIcon = {
-                                Icon(
-                                    Icons.Filled.Search,
-                                    contentDescription = null,
-                                    tint = Color(0xffA3A0A0)
-                                )
-                            },
-                            //keyboardActions = KeyboardActions.Default,
-                            keyboardOptions = KeyboardOptions(
-                                imeAction = ImeAction.Done
-                            ),
-                            singleLine = true,
-                            textStyle = TextStyle(textIndent = TextIndent(10.sp)),
-                            colors = TextFieldDefaults.textFieldColors(
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent,
-                                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
-                                textColor = Color(0xffA3A0A0),
-                            ),
-                            value = text,
-                            shape = RoundedCornerShape(20.dp),
-                            onValueChange = { text = it },
-                            placeholder = {
-                                Text(
-                                    "Search",
-                                    color = Color(0xffA3A0A0),
-                                    style = TextStyle(textIndent = TextIndent(10.sp))
-                                )
-                            },
-                            modifier = Modifier.fillMaxWidth().height(56.dp)
-                                .padding(horizontal = 5.dp),
+                   // windowInsets = WindowInsets.statusBars,
+                    title = {},
+                    navigationIcon = {
 
-                            )
+                                TextField(
+                                    maxLines = 1,
+                                    leadingIcon = {
+                                        Icon(
+                                            Icons.Filled.Search,
+                                            contentDescription = null,
+                                            tint = Color(0xffA3A0A0)
+                                        )
+                                    },
+                                    //keyboardActions = KeyboardActions.Default,
+                                    keyboardOptions = KeyboardOptions(
+                                        imeAction = ImeAction.Done
+                                    ),
+                                    singleLine = true,
+                                    textStyle = TextStyle(textIndent = TextIndent(10.sp)),
+                                    colors = TextFieldDefaults.textFieldColors(
+                                        focusedIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                                        textColor = Color(0xffA3A0A0),
+                                    ),
+                                    value = text,
+                                    shape = RoundedCornerShape(20.dp),
+                                    onValueChange = { text = it },
+                                    placeholder = {
+                                        Text(
+                                            "Search",
+                                            color = Color(0xffA3A0A0),
+                                            style = TextStyle(textIndent = TextIndent(10.sp))
+                                        )
+                                    },
+                                    modifier = Modifier.fillMaxWidth().height(56.dp)
+                                        .padding(horizontal = 5.dp),
+
+                                    )
 
                     },
+                )
+            },
+            content = {
 
-                    )
             }
-        ) {
-
-
-        }
+        )
     }
 }
 

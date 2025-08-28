@@ -18,16 +18,19 @@ import org.koin.core.definition.Callbacks
 import kotlin.coroutines.resume
 
 actual class PermissionHandler(private val context: Context) {
-    actual constructor(): this(MyApplication.applicationContext())
+    actual constructor() : this(MyApplication.applicationContext())
+
     private var permissionListener: PermissionListener? = null
 
     internal fun initializeInterface(permissionListenerInitializer: PermissionListener) {
         permissionListener = permissionListenerInitializer;
     }
 
-    actual suspend fun requestPermission(permission: String) {
-        permissionListener?.requestPermission(permission)
-    }
+    /*
+     comentei so pra minimizar o alert do intellij
+     actual suspend fun requestPermission(permission: String) {
+         permissionListener?.requestPermission(permission)
+     }*/
 
     actual suspend fun openAppSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
@@ -36,16 +39,25 @@ actual class PermissionHandler(private val context: Context) {
         context.startActivity(intent)
     }
 
+    /*
+    comentei so pra minimizar o alert do intellij
     actual suspend fun verifyPermission(permission: String): PermissionStatus {
-        val result = permissionListener?.getPermissionStatus(permission)
-        return when (result) {
-            PermissionStatus.Granted -> PermissionStatus.Granted
-            PermissionStatus.Denied -> PermissionStatus.Denied
-            PermissionStatus.PermanentlyDenied -> PermissionStatus.PermanentlyDenied
-            PermissionStatus.PartiallyGranted -> PermissionStatus.PartiallyGranted
-            PermissionStatus.NotDetermined -> PermissionStatus.NotDetermined
-            else -> PermissionStatus.NotDetermined
-        }
+         val result = permissionListener?.getPermissionStatus(permission)
+         return when (result) {
+             PermissionStatus.Granted -> PermissionStatus.Granted
+             PermissionStatus.Denied -> PermissionStatus.Denied
+             PermissionStatus.PermanentlyDenied -> PermissionStatus.PermanentlyDenied
+             PermissionStatus.PartiallyGranted -> PermissionStatus.PartiallyGranted
+             PermissionStatus.NotDetermined -> PermissionStatus.NotDetermined
+             else -> PermissionStatus.NotDetermined
+         }
+     }*/
+    actual suspend fun verifyPermission(permission: String, callback: (PermissionStatus) -> Unit): Boolean {
+        return true;
+    }
+
+    actual suspend fun requestPermission(permission: String): PermissionStatus {
+        TODO("Not yet implemented")
     }
 
 

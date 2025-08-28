@@ -4,7 +4,7 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.flemis.bookishadventure.core.domain.usecases.AuthUseCase
+import br.com.flemis.bookishadventure.features.auth.domain.usecases.AuthUseCase
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.state.AuthState
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -107,7 +107,8 @@ class SignUp(private var navController: NavController) {
             content = {
                 Surface(
                     modifier = Modifier.Companion.fillMaxSize()
-                        .padding(top = it.calculateTopPadding(), bottom = it.calculateBottomPadding()),
+                        .padding(top = it.
+                        calculateTopPadding(), bottom = it.calculateBottomPadding()),
                     color = Color.Companion.Transparent
                 ) {
 

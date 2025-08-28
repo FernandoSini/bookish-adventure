@@ -25,6 +25,7 @@ plugins {
     id("com.google.devtools.ksp")
     alias(libs.plugins.google.services)
     alias(libs.plugins.crashlytics)
+    alias(libs.plugins.secrets)
 
 }
 
@@ -89,13 +90,11 @@ kotlin {
     }
 
 
-//val xc = XCFramework()
     listOf(
         iosX64(), iosArm64(), iosSimulatorArm64()
     ).forEach { iosTarget ->
-        //val xc = XCFramework()
-        iosTarget.binaries.framework {
 
+        iosTarget.binaries.framework {
             // outputDirectory = layout.buildDirectory.dir("bin/${iosTarget.name}/a/debugFramework").get().asFile
             binaryOption("bundleId", "br.com.flemis.bookishadventure.iphone.ComposeApp")
             binaryOption("bundleVersion", "1")
@@ -111,10 +110,7 @@ kotlin {
             linkerOpts.add("-lz")
             linkerOpts("-PurchasesHybridCommon")
             linkerOpts("-FirebaseCore")
-            //linkerOpts.add("-F/Users/fernandosini/Library/Developer/Xcode/DerivedData/iosApp-bidasoyzswsczqagzxdtxdiylwcq/SourcePackages/checkouts/firebase-ios-sdk")
             linkerOpts.add("-Xlinker -no_warn_duplicate_libraries")
-            //linkerOpts("-framework", "FirebaseCore")
-            // xc.add(this)
 
         }
 
@@ -221,6 +217,9 @@ kotlin {
              *//* testImplementation(libs.koin.test)
             testImplementation(libs.koin.test.junit4)
             testImplementation(libs.koin.test.junit5)*/
+            implementation(libs.google.maps.compose.core)
+            implementation(libs.google.maps.compose.utils)
+            implementation(libs.kotlinx.collections.immutable)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
@@ -375,11 +374,14 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
             resValue("string", "apiKey", localProperties.getProperty("API_KEY_NAME"))
+            resValue("string", "googleMapsApiKey", localProperties.getProperty("GOOGLE_MAPS_API_KEY"))
             // signingConfig = signingConfigs.getByName("debug")
         }
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
+            resValue("string", "apiKey", localProperties.getProperty("API_KEY_NAME"))
+            resValue("string", "googleMapsApiKey", localProperties.getProperty("GOOGLE_MAPS_API_KEY"))
             //  signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -435,9 +437,7 @@ dependencies {
      add("kspIosX64", libs.androidx.room.compiler)
      add("kspIosArm64", libs.androidx.room.compiler)*/
     listOf(
-        "kspAndroid",
-// "kspJvm",
-        "kspIosSimulatorArm64", "kspIosX64", "kspIosArm64"
+        "kspAndroid",/*"kspIosSimulatorArm64",*/ "kspIosX64", "kspIosArm64"// "kspJvm",
     ).forEach {
         add(it, libs.room.compiler)
 

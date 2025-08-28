@@ -1,6 +1,6 @@
-package br.com.flemis.bookishadventure.core.domain.usecases
+package br.com.flemis.bookishadventure.features.auth.domain.usecases
 
-import br.com.flemis.bookishadventure.data.repository.AuthRepository
+import br.com.flemis.bookishadventure.features.auth.domain.repository.AuthRepository
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.state.AuthState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

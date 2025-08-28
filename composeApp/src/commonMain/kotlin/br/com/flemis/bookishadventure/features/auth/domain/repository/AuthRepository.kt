@@ -1,4 +1,4 @@
-package br.com.flemis.bookishadventure.data.repository
+package br.com.flemis.bookishadventure.features.auth.domain.repository
 
 import br.com.flemis.bookishadventure.core.domain.models.User
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.state.AuthState
@@ -9,5 +9,5 @@ interface AuthRepository  {
     suspend fun login(body: HashMap<String,String>, state: MutableStateFlow<AuthState>): StateFlow<AuthState>
     suspend fun logout()
     suspend fun register(email: String, password: String)
-    suspend fun fetchLocalData():User?
+    suspend fun fetchLocalData(): User?
 }

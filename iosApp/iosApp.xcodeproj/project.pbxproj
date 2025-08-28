@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
+		1554A39D60A2D2F4DC3EF388 /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554A838437CD3C40CEF9015 /* MapsViewModel.swift */; };
+		1554AB5DD88D90F838198BD2 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554AD59CDACF94CED08D763 /* MapController.swift */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		CE14D70B2DC9736F0036389D /* CustomUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14D70A2DC9736F0036389D /* CustomUserAgent.swift */; };
@@ -17,11 +19,13 @@
 		CE3D121D2D8C9F4E007E32DD /* BookishAdventureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D121C2D8C9F4E007E32DD /* BookishAdventureUITests.swift */; };
 		CE3D121F2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D121E2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift */; };
 		CE4A294F2DC81B29007E805A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE4A294E2DC81B29007E805A /* FirebaseCore */; };
+		CE7E08DC2E42392800299B61 /* SwiftMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E08D92E42392800299B61 /* SwiftMap.swift */; };
 		CE8A218E2DEE1CA500938A45 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B82D6637570095B756 /* FirebaseAppCheck */; };
 		CE9264B52D6637570095B756 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B42D6637570095B756 /* FirebaseAnalyticsOnDeviceConversion */; };
 		CE9264B72D6637570095B756 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264B62D6637570095B756 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		CE9264BB2D6637570095B756 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264BA2D6637570095B756 /* FirebaseAppDistribution-Beta */; };
 		CE9264BD2D663A020095B756 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE9264BC2D663A020095B756 /* FirebaseCrashlytics */; };
+		CEA5F02A2E3EAC87006557E8 /* IosNativeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5F0282E3EAC87006557E8 /* IosNativeViewFactory.swift */; };
 		CEF81A2C2E044D4C006D745F /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = CE24F3422DC5C0BA00F9745D /* RevenueCat */; };
 		CEF81A2D2E044D4C006D745F /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE24F3442DC5C0BA00F9745D /* RevenueCatUI */; };
 		CEFDAD9D2DE89653003F901F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEFDAD9C2DE89653003F901F /* GoogleService-Info.plist */; };
@@ -40,6 +44,8 @@
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1554A838437CD3C40CEF9015 /* MapsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapsViewModel.swift; path = viewmodel/MapsViewModel.swift; sourceTree = "<group>"; };
+		1554AD59CDACF94CED08D763 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapController.swift; path = controller/MapController.swift; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* BookishAdventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookishAdventure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +56,9 @@
 		CE3D121A2D8C9F4E007E32DD /* BookishAdventureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookishAdventureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3D121C2D8C9F4E007E32DD /* BookishAdventureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookishAdventureUITests.swift; sourceTree = "<group>"; };
 		CE3D121E2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookishAdventureUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CE62DEBC2E4EA8BD00713E77 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CE7E08D92E42392800299B61 /* SwiftMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMap.swift; sourceTree = "<group>"; };
+		CEA5F0282E3EAC87006557E8 /* IosNativeViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosNativeViewFactory.swift; sourceTree = "<group>"; };
 		CEFDAD9C2DE89653003F901F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +100,7 @@
 		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE62DEBC2E4EA8BD00713E77 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,6 +108,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				CEA5F0292E3EAC87006557E8 /* Factory */,
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
 				CE3D121B2D8C9F4E007E32DD /* BookishAdventureUITests */,
@@ -118,6 +129,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E08DB2E42392800299B61 /* Components */,
 				CE21AB892E0FB6530028AA22 /* Permissions */,
 				CE14D7082DC973510036389D /* user_agent */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -161,6 +173,32 @@
 				CE3D121E2D8C9F4E007E32DD /* BookishAdventureUITestsLaunchTests.swift */,
 			);
 			path = BookishAdventureUITests;
+			sourceTree = "<group>";
+		};
+		CE7E08DA2E42392800299B61 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E08D92E42392800299B61 /* SwiftMap.swift */,
+				1554A838437CD3C40CEF9015 /* MapsViewModel.swift */,
+				1554AD59CDACF94CED08D763 /* MapController.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		CE7E08DB2E42392800299B61 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E08DA2E42392800299B61 /* Maps */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CEA5F0292E3EAC87006557E8 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				CEA5F0282E3EAC87006557E8 /* IosNativeViewFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,8 +342,12 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				CE7E08DC2E42392800299B61 /* SwiftMap.swift in Sources */,
+				CEA5F02A2E3EAC87006557E8 /* IosNativeViewFactory.swift in Sources */,
 				CE21AB8A2E0FB6530028AA22 /* PermissionHelper.swift in Sources */,
 				CE14D70B2DC9736F0036389D /* CustomUserAgent.swift in Sources */,
+				1554A39D60A2D2F4DC3EF388 /* MapsViewModel.swift in Sources */,
+				1554AB5DD88D90F838198BD2 /* MapController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

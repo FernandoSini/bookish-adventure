@@ -1,14 +1,12 @@
 [versions]
 #agp = "8.5.2"
-adaptive = "1.0.1"
+#adaptive = "1.0.1" antes era esse agora mudou para material3
+material3 = "1.9.0-alpha04"
 #adaptiveNavigationVersion = "1.0.0-alpha03"
 agp = "8.7.3"
 chart = "Beta-0.0.5"
 bignum = "0.3.9"
-coilCompose = "3.2.0"
-coilKtCoilCompose = "3.2.0"
-coilNetworkKtor3Version = "3.2.0"
-coilSvg = "3.2.0"
+coil = "3.2.0"
 compose = "1.7.3"
 android-compileSdk = "35"
 android-minSdk = "24"
@@ -18,30 +16,32 @@ androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.2.0"
 androidx-core-ktx = "1.16.0"
 androidx-espresso-core = "3.6.1"
-androidx-lifecycle = "2.9.0"
+androidx-lifecycle = "2.9.1"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 #compose-multiplatform = "1.7.0"
-compose-multiplatform = "1.8.2"
+compose-multiplatform = "1.9.0-beta03"#"1.8.2"
 #composeWebviewMultiplatform = "1.9.40"
 composeWebviewMultiplatform = "2.0.0"
 junit = "4.13.2"
 kotlin = "2.1.20"
+kotlinx-collections-immutable = "0.4.0"
 coroutinesVersion = "1.10.1"
 ktor = "3.1.3"
 #lifecycleViewmodelComposeVersion = "2.8.3"
-lifecycleViewmodelComposeVersion = "2.9.0"
+lifecycleViewmodelComposeVersion = "2.9.1"
 #materialNavigation = "1.7.0-beta02"
 materialNavigation = "1.8.0-beta02"
 multiplatformSettingsNoArgVersion = "1.3.0"
 #navigationCompose = "2.8.0-alpha10"
-navigationCompose = "2.9.0-beta02"
+navigationCompose = "2.9.0-beta03"
 permissionsCompose = "0.19.1"
 activityKtx = "1.10.1"
 dateTimeVersion = "0.6.2"
 #androidxRoom = "2.7.0-alpha06"
 #androidxRoom = "2.7.0-alpha08"
 androidxRoom = "2.7.0-alpha13"
+#androidxRoom = "2.7.2"
 #ksp="2.0.21-1.0.27"
 #ksp = "2.1.0-1.0.29"
 ksp = "2.1.20-1.0.32"
@@ -59,7 +59,7 @@ gradlePlugins-google-services = "4.4.2"
 purchases-kmp = "1.6.1+13.21.0"
 startupRuntime = "1.2.0"
 #test-manifest= "1.7.8"
-test-manifest = "1.8.0"
+test-manifest = "1.9.0"
 firebase-core = "21.1.1"
 firebase-config = "21.0.0"
 firebase-crashlytics-ktx = "19.0.0"
@@ -70,8 +70,11 @@ assertk = "0.28.1"
 #swiftklib = "0.6.4"
 android-billing = "7.1.1"
 napier = "2.7.1"
-koin = "4.1.0"
-savedstate = "1.3.0"
+#koin = "4.1.0" old
+koin = "4.1.1-Beta1"
+savedstate = "1.8.1" #"1.3.0"
+graphics-shapes = "1.0.0-alpha09"
+maps="6.2.1"
 
 
 [libraries]
@@ -86,7 +89,7 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", ver
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
-koin-core = { module = "io.insert-koin:koin-core" , version.ref="koin"}
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 
 
@@ -95,9 +98,9 @@ chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
 compose-webview-multiplatform = { module = "io.github.kevinnzou:compose-webview-multiplatform", version.ref = "composeWebviewMultiplatform" }
 
 #coil
-coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coilSvg" }
-coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilKtCoilCompose" }
-coil3-coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coilNetworkKtor3Version" }
+coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coil" }
+coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil3-coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 
 #Junit
@@ -120,16 +123,19 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "test-manifest" }
 
+# Maps
+google-maps-compose-core = { module = "com.google.maps.android:maps-compose", version.ref = "maps" }
+google-maps-compose-utils = { module = "com.google.maps.android:maps-compose-utils", version.ref = "maps" }
 #Napier
-napier={module="io.github.aakira:napier", version.ref="napier"}
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 
 #jetbrains packages
 #jetbrains-adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "adaptive" } mesmo package do adaptive
 #jetbrains-window-size = { module = "org.jetbrains.compose.material3:material3-window-size-class", version.ref = "window-size-version" } ja esta dentro do adaptive
-jetbrains-savedstate = { module = "org.jetbrains.androidx.savedstate:savedstate", version.ref = "savedstate" }
+jetbrains-savedstate = { name = "savedstate", group = "org.jetbrains.androidx.savedstate", version.ref = "savedstate" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-jetbrains-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "adaptive" }
+jetbrains-material3 = { name = "material3", group = "org.jetbrains.compose.material3", version.ref = "material3" }
 #jetbrains-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "adaptive" }
 #jetbrains-adaptive-navigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "adaptive" } ja está dentro do adaptive
 jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelComposeVersion" }
@@ -138,8 +144,10 @@ jetbrains-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", na
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "dateTimeVersion" }
 jetbrains-material-navigation = { module = "org.jetbrains.compose.material:material-navigation", version.ref = "materialNavigation" }
-jetbrains-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-
+#old jetbrains-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+jetbrains-navigation-compose = { name = "navigation-compose", group = "org.jetbrains.androidx.navigation", version.ref = "navigationCompose" }
+graphics-shapes={name="graphics-shapes", group="org.jetbrains.androidx.graphics", version.ref="graphics-shapes" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 #ktor
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
@@ -196,3 +204,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "gradlePlugins-crashlytics" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gradlePlugins-google-services" }
 #switfklib = { id = "io.github.ttypic.swiftklib", version.ref = "swiftklib" }
+secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version = "2.0.1" }

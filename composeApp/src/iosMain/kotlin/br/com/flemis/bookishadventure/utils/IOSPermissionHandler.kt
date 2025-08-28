@@ -30,6 +30,12 @@ import platform.AppTrackingTransparency.ATTrackingManagerAuthorizationStatusAuth
 import platform.AppTrackingTransparency.ATTrackingManagerAuthorizationStatusDenied
 import platform.AppTrackingTransparency.ATTrackingManagerAuthorizationStatusNotDetermined
 import platform.AppTrackingTransparency.ATTrackingManagerAuthorizationStatusRestricted
+import platform.UserNotifications.UNAuthorizationStatusAuthorized
+import platform.UserNotifications.UNAuthorizationStatusDenied
+import platform.UserNotifications.UNAuthorizationStatusEphemeral
+import platform.UserNotifications.UNAuthorizationStatusNotDetermined
+import platform.UserNotifications.UNAuthorizationStatusProvisional
+import platform.UserNotifications.UNUserNotificationCenter
 
 enum class IOSPermissionStatus {
     Granted,
@@ -141,6 +147,21 @@ class IOSPermissionHandler : NSObject(), CLLocationManagerDelegateProtocol {
                 callback(IOSPermissionStatus.NotDetermined)
             }
 
+        }
+        "notifications" -> {
+            // Notifications permission is not directly available in iOS, but you can use UserNotifications framework
+            // This is a placeholder for future implementation
+
+                UNUserNotificationCenter.currentNotificationCenter().getNotificationSettingsWithCompletionHandler { settings ->
+                when (settings?.authorizationStatus) {
+                    UNAuthorizationStatusNotDetermined -> callback(IOSPermissionStatus.NotDetermined)
+                     UNAuthorizationStatusDenied -> callback(IOSPermissionStatus.Denied)
+                    UNAuthorizationStatusAuthorized -> callback(IOSPermissionStatus.Granted)
+                    UNAuthorizationStatusProvisional -> callback(IOSPermissionStatus.Granted)
+                    UNAuthorizationStatusEphemeral -> callback(IOSPermissionStatus.Granted)
+                    else -> callback(IOSPermissionStatus.NotDetermined)
+                }
+            }
         }
 
         else -> callback(IOSPermissionStatus.NotDetermined)

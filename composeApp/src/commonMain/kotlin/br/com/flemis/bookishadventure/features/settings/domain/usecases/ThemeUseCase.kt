@@ -1,4 +1,4 @@
-package br.com.flemis.bookishadventure.core.domain.usecases
+package br.com.flemis.bookishadventure.features.settings.domain.usecases
 
 import br.com.flemis.bookishadventure.features.settings.domain.repository.ThemeRepository
 import br.com.flemis.bookishadventure.features.settings.presentation.ui.viewmodel.state.ThemeModeState

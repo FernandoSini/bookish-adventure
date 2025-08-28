@@ -11,5 +11,7 @@ plugins {
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.crashlytics) apply false
     alias(libs.plugins.kotlinx.serialization) apply false
+    alias(libs.plugins.secrets) apply false
+
 
 }

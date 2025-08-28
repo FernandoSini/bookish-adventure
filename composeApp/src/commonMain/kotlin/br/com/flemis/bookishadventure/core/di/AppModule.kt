@@ -1,8 +1,8 @@
 package br.com.flemis.bookishadventure.core.di
 
-import br.com.flemis.bookishadventure.core.domain.usecases.AuthUseCase
+import br.com.flemis.bookishadventure.features.auth.domain.usecases.AuthUseCase
 import br.com.flemis.bookishadventure.core.domain.usecases.InAppPurchaseUseCase
-import br.com.flemis.bookishadventure.core.domain.usecases.ThemeUseCase
+import br.com.flemis.bookishadventure.features.settings.domain.usecases.ThemeUseCase
 import br.com.flemis.bookishadventure.core.domain.usecases.UserUseCase
 import br.com.flemis.bookishadventure.data.datasource.local.LocalDataSource
 import br.com.flemis.bookishadventure.data.datasource.local.LocalDataSourceImpl
@@ -15,11 +15,11 @@ import br.com.flemis.bookishadventure.data.datasource.remote.services.AuthServic
 import br.com.flemis.bookishadventure.data.datasource.remote.services.UserService
 import br.com.flemis.bookishadventure.data.datasource.remote.services.implementations.AuthServiceImpl
 import br.com.flemis.bookishadventure.data.datasource.remote.services.implementations.UserServiceImpl
-import br.com.flemis.bookishadventure.data.repository.AuthRepository
+import br.com.flemis.bookishadventure.features.auth.domain.repository.AuthRepository
 import br.com.flemis.bookishadventure.features.settings.domain.repository.ThemeRepository
 import br.com.flemis.bookishadventure.data.repository.UserRepository
-import br.com.flemis.bookishadventure.data.repository.implementations.AuthRepositoryImpl
-import br.com.flemis.bookishadventure.data.repository.implementations.UserRepositoryImpl
+import br.com.flemis.bookishadventure.features.auth.data.repository.AuthRepositoryImpl
+import br.com.flemis.bookishadventure.features.auth.data.repository.UserRepositoryImpl
 import br.com.flemis.bookishadventure.features.settings.data.repository.implementations.ThemeRepositoryImpl
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.AuthViewModel
 import br.com.flemis.bookishadventure.features.base.presentation.ui.viewmodel.BaseViewModel
@@ -31,6 +31,11 @@ import br.com.flemis.bookishadventure.features.splash.presentation.ui.viewmodel.
 import br.com.flemis.bookishadventure.features.settings.presentation.ui.viewmodel.ThemeViewModel
 import br.com.flemis.bookishadventure.presentation.viewmodel.UserViewModel
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.VerifyCodeViewModel
+import br.com.flemis.bookishadventure.features.maps.data.datasource.local.MapLocalDataSource
+import br.com.flemis.bookishadventure.features.maps.data.datasource.local.MapLocalDataSourceImpl
+import br.com.flemis.bookishadventure.features.maps.data.datasource.remote.MapRemoteDataSource
+import br.com.flemis.bookishadventure.features.maps.data.datasource.remote.MapRemoteDataSourceImpl
+import br.com.flemis.bookishadventure.features.maps.domain.usecases.MapUseCase
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
@@ -47,6 +52,9 @@ val datasourceModule: Module = module {
     singleOf(::LocalDataSourceImpl).bind(LocalDataSource::class)
     singleOf(::RemoteDataSourceImpl).bind(RemoteDataSource::class)
     singleOf(::IapDataSourceImpl).bind(IapDataSource::class)
+    singleOf(::MapLocalDataSourceImpl).bind(MapLocalDataSource::class)
+    singleOf(::MapRemoteDataSourceImpl).bind(MapRemoteDataSource::class)
+
 }
 
 val repositoryModule: Module = module {
@@ -60,6 +68,7 @@ val useCaseModule: Module = module {
     singleOf(::ThemeUseCase)
     singleOf(::InAppPurchaseUseCase)
     singleOf(::UserUseCase)
+    singleOf(::MapUseCase)
 }
 val serviceModule: Module = module {
     singleOf(::UserServiceImpl).bind(UserService::class)

@@ -1,9 +1,9 @@
-package br.com.flemis.bookishadventure.data.repository.implementations
+package br.com.flemis.bookishadventure.features.auth.data.repository
 
 import br.com.flemis.bookishadventure.core.domain.models.User
 import br.com.flemis.bookishadventure.data.datasource.local.LocalDataSource
-import br.com.flemis.bookishadventure.data.repository.AuthRepository
-import br.com.flemis.bookishadventure.data.datasource.local.dao.models.UserEntity
+import br.com.flemis.bookishadventure.features.auth.domain.repository.AuthRepository
+import br.com.flemis.bookishadventure.data.datasource.local.dao.models.UserModel
 import br.com.flemis.bookishadventure.data.datasource.remote.RemoteDataSource
 import br.com.flemis.bookishadventure.features.auth.presentation.ui.viewmodel.state.AuthState
 import br.com.flemis.bookishadventure.core.errors.states.ErrorResponseState
@@ -29,7 +29,7 @@ class AuthRepositoryImpl : AuthRepository, KoinComponent {
         result.fold(
             onSuccess = {
                 authLocalDataSource.saveUser(
-                    UserEntity(
+                    UserModel(
                         id = it.id,
                         firstname = it.firstname,
                         lastname = it.lastname,

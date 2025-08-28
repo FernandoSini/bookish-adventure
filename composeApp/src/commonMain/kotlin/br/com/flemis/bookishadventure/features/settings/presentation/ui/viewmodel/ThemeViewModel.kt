@@ -3,7 +3,7 @@ package br.com.flemis.bookishadventure.features.settings.presentation.ui.viewmod
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.flemis.bookishadventure.core.domain.usecases.ThemeUseCase
+import br.com.flemis.bookishadventure.features.settings.domain.usecases.ThemeUseCase
 import br.com.flemis.bookishadventure.getPlatform
 import br.com.flemis.bookishadventure.features.settings.presentation.ui.viewmodel.state.ThemeModeState
 import br.com.flemis.bookishadventure.utils.Preferences
