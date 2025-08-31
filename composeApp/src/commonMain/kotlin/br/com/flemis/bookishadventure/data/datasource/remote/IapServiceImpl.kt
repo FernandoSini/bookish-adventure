@@ -42,7 +42,7 @@ expect class IapServiceImpl {
 
     /**
      * Retorna a lista de compras ativas conhecidas.
-     * Útil para verificar o entitlement inicial após o lançamento do app.
+     * Útil para verificar o entitlement(direito do usuario) inicial após o lançamento do app.
      */
     suspend fun getActivePurchases(): List<PurchaseModel>
 

@@ -14,23 +14,8 @@ import org.koin.core.component.inject
 class InAppPurchaseUseCase : KoinComponent {
     private val iapDataSource: IapDataSource by inject()
     suspend fun initializeIapManager(purchaseState: MutableStateFlow<PurchaseResultModel?>) {
-        iapDataSource.initialize { result ->
-            when (result) {
-                is PurchaseResultModel.Success -> {
-                  //  Napier.i { "IapUseCase: Success: ${result.purchase}" }
-                }
-
-                is PurchaseResultModel.Error -> {
-                   // Napier.e { "IapUsecase: Error on IAp ${result.message}" }
-                }
-
-                is PurchaseResultModel.Pending -> {
-
-                }
-                is PurchaseResultModel.UserCancelled -> {}
-            }
-            /*purchaseState.value = result
-            println("IapViewModel: Purchase update received via callback: $result")*/
+        iapDataSource.initialize {
+            purchaseState.value = it
         }
 
 
